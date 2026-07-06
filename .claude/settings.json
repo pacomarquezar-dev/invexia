@@ -4,7 +4,27 @@
       "Bash(npx tsc *)",
       "Bash(npm run *)",
       "Bash(taskkill //F //IM node.exe)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git config *)",
+      "Bash(git push *)",
+      "Bash(git ls-remote *)",
+      "Read(//tmp/**)",
+      "Bash(curl -sI http://localhost:3000/calculadoras/interes-compuesto)",
+      "Bash(git mv *)",
+      "Bash(mv middleware.ts proxy.ts)",
+      "Bash(curl -s http://localhost:3000/calculadoras/interes-compuesto -o /tmp/page2.html)",
+      "Bash(grep -o '<script nonce=\"[^\"]*\">\\(self.__next_f' /tmp/page2.html | head -3; echo \"---\"; grep -c \"__next_f.push\" /tmp/page2.html)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(npm init *)",
+      "Bash(node verify-calculator.mjs)",
+      "Bash(timeout 20 bash -c 'until curl -sf http://localhost:3000 >/dev/null; do sleep 1; done')",
+      "Bash(node verify-numberfield.mjs)",
+      "Bash(curl -sf http://localhost:3000)",
+      "Bash(node verify-dca.mjs)"
     ]
   }
 }
