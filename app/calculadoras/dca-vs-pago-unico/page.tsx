@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import DcaVsLumpSumCalculator from "./DcaVsLumpSumCalculator";
 
 export const metadata: Metadata = {
@@ -33,6 +34,8 @@ export default function DcaVsPagoUnicoPage() {
       </div>
 
       <DcaVsLumpSumCalculator />
+
+      <RelatedGlossaryTerms slugs={["dca"]} />
 
       <p className="text-xs text-foreground/50">
         Esta calculadora es una herramienta educativa. Asume una rentabilidad constante y no

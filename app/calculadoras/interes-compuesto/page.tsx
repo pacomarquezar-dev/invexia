@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import CompoundInterestCalculator from "./CompoundInterestCalculator";
 
 export const metadata: Metadata = {
@@ -33,6 +34,8 @@ export default function InteresCompuestoPage() {
       </div>
 
       <CompoundInterestCalculator />
+
+      <RelatedGlossaryTerms slugs={["interes-compuesto", "interes-simple", "tae", "tin"]} />
 
       <p className="text-xs text-foreground/50">
         Esta calculadora es una herramienta educativa. Los resultados son estimaciones basadas en

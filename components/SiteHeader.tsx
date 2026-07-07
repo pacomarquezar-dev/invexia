@@ -19,6 +19,12 @@ export default function SiteHeader() {
         >
           Test de perfil
         </Link>
+        <Link
+          href="/glosario"
+          className="text-sm font-medium text-foreground/70 hover:text-foreground"
+        >
+          Glosario
+        </Link>
       </nav>
     </header>
   );

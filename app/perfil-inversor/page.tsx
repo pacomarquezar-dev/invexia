@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import InvestorProfileQuizLoader from "./InvestorProfileQuizLoader";
 
 export const metadata: Metadata = {
@@ -26,6 +27,8 @@ export default function PerfilInversorPage() {
       </div>
 
       <InvestorProfileQuizLoader />
+
+      <RelatedGlossaryTerms slugs={["perfil-de-riesgo", "volatilidad", "drawdown"]} />
 
       <p className="text-xs text-foreground/50">
         Este test es una herramienta educativa que orienta sobre tu perfil de riesgo. No es un

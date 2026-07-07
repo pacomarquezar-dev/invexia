@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import FeeImpactCalculator from "./FeeImpactCalculator";
 
 export const metadata: Metadata = {
@@ -33,6 +34,8 @@ export default function CosteComisionesPage() {
       </div>
 
       <FeeImpactCalculator />
+
+      <RelatedGlossaryTerms slugs={["comision-de-gestion", "fondo-indexado"]} />
 
       <p className="text-xs text-foreground/50">
         Esta calculadora es una herramienta educativa. Asume que la comisión anual se resta

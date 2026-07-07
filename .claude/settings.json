@@ -35,7 +35,16 @@
       "Bash(node verify-quiz.mjs)",
       "Bash(node verify-rate-suggestion.mjs)",
       "Bash(node verify-edit-after-suggestion.mjs)",
-      "Bash(node verify-fill-decimal.mjs)"
+      "Bash(node verify-fill-decimal.mjs)",
+      "WebSearch",
+      "WebFetch(domain:www.bde.es)",
+      "Bash(node -e ' *)",
+      "Bash(mkdir -p \"c:/Users/ASUS/Documents/invexia/app/glosario/[termino]\")",
+      "Bash(node -e \"console.log\\(require\\('./lib/glossary.ts'\\)\\)\")",
+      "Bash(node verify-glossary.mjs)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\ASUS\\Documents\\invexia\\app\\glosario"
     ]
   }
 }

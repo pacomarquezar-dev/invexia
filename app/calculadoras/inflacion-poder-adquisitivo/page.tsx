@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import InflationImpactCalculator from "./InflationImpactCalculator";
 
 export const metadata: Metadata = {
@@ -33,6 +34,8 @@ export default function InflacionPoderAdquisitivoPage() {
       </div>
 
       <InflationImpactCalculator />
+
+      <RelatedGlossaryTerms slugs={["inflacion", "rentabilidad-real-vs-nominal"]} />
 
       <p className="text-xs text-foreground/50">
         Esta calculadora es una herramienta educativa. Asume una inflación anual constante; los
