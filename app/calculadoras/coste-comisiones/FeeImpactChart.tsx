@@ -10,10 +10,22 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import type { YearlyCapital } from "@/lib/compoundInterest";
+import type { FeeImpactYearPoint } from "@/lib/feeImpact";
 import { formatEurosCompact } from "@/lib/formatCurrency";
 
-export default function CompoundInterestChart({ evolution }: { evolution: YearlyCapital[] }) {
+interface FeeImpactChartProps {
+  evolution: FeeImpactYearPoint[];
+  lowLabel: string;
+  mediumLabel: string;
+  highLabel: string;
+}
+
+export default function FeeImpactChart({
+  evolution,
+  lowLabel,
+  mediumLabel,
+  highLabel,
+}: FeeImpactChartProps) {
   return (
     <ResponsiveContainer width="100%" height={320}>
       <LineChart data={evolution} margin={{ top: 8, right: 16, left: 8, bottom: 8 }}>
@@ -31,16 +43,24 @@ export default function CompoundInterestChart({ evolution }: { evolution: Yearly
         <Legend />
         <Line
           type="monotone"
-          dataKey="capital"
-          name="Capital total"
+          dataKey="low"
+          name={lowLabel}
           stroke="#2563eb"
           strokeWidth={2}
           dot={false}
         />
         <Line
           type="monotone"
-          dataKey="contributed"
-          name="Aportado (sin intereses)"
+          dataKey="medium"
+          name={mediumLabel}
+          stroke="#d97706"
+          strokeWidth={2}
+          dot={false}
+        />
+        <Line
+          type="monotone"
+          dataKey="high"
+          name={highLabel}
           stroke="#71717a"
           strokeWidth={2}
           strokeDasharray="4 4"

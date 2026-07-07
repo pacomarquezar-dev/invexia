@@ -6,7 +6,7 @@ import NumberField from "@/components/NumberField";
 import { calculateCompoundInterest } from "@/lib/compoundInterest";
 import { formatEuros } from "@/lib/formatCurrency";
 
-const CompoundInterestChart = dynamic(() => import("./CompoundInterestChart"), {
+const YearlyCapitalChart = dynamic(() => import("@/components/YearlyCapitalChart"), {
   ssr: false,
   loading: () => (
     <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
@@ -103,7 +103,7 @@ export default function CompoundInterestCalculator() {
           </dl>
         </div>
 
-        <CompoundInterestChart evolution={result.evolution} />
+        <YearlyCapitalChart evolution={result.evolution} />
       </div>
     </div>
   );

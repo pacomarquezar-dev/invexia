@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { calculators } from "@/lib/calculators";
 
 export default function Home() {
   return (
@@ -12,18 +13,15 @@ export default function Home() {
         dinero, en español.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-4">
-        <Link
-          href="/calculadoras/interes-compuesto"
-          className="rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:opacity-90"
-        >
-          Calculadora de interés compuesto
-        </Link>
-        <Link
-          href="/calculadoras/dca-vs-pago-unico"
-          className="rounded-full border border-foreground/20 px-5 py-3 text-sm font-medium transition-colors hover:bg-foreground/5"
-        >
-          DCA vs pago único
-        </Link>
+        {calculators.map((calculator) => (
+          <Link
+            key={calculator.href}
+            href={calculator.href}
+            className="rounded-full border border-foreground/20 px-5 py-3 text-sm font-medium transition-colors hover:bg-foreground/5"
+          >
+            {calculator.name}
+          </Link>
+        ))}
       </div>
     </main>
   );

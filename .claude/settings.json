@@ -24,7 +24,14 @@
       "Bash(timeout 20 bash -c 'until curl -sf http://localhost:3000 >/dev/null; do sleep 1; done')",
       "Bash(node verify-numberfield.mjs)",
       "Bash(curl -sf http://localhost:3000)",
-      "Bash(node verify-dca.mjs)"
+      "Bash(node verify-dca.mjs)",
+      "Bash(node verify-header.mjs)",
+      "Bash(node verify-nav.mjs)",
+      "Bash(node verify-fees.mjs)",
+      "Bash(node verify-listing.mjs)",
+      "Bash(node verify-savings-goal.mjs)",
+      "Bash(node verify-fire.mjs)",
+      "Bash(node verify-inflation.mjs)"
     ]
   }
 }
