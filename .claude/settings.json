@@ -31,7 +31,11 @@
       "Bash(node verify-listing.mjs)",
       "Bash(node verify-savings-goal.mjs)",
       "Bash(node verify-fire.mjs)",
-      "Bash(node verify-inflation.mjs)"
+      "Bash(node verify-inflation.mjs)",
+      "Bash(node verify-quiz.mjs)",
+      "Bash(node verify-rate-suggestion.mjs)",
+      "Bash(node verify-edit-after-suggestion.mjs)",
+      "Bash(node verify-fill-decimal.mjs)"
     ]
   }
 }

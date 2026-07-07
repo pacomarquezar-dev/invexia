@@ -5,6 +5,7 @@ import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import { calculateCompoundInterest } from "@/lib/compoundInterest";
 import { formatEuros } from "@/lib/formatCurrency";
+import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
 
 const YearlyCapitalChart = dynamic(() => import("@/components/YearlyCapitalChart"), {
   ssr: false,
@@ -23,7 +24,8 @@ function toNonNegativeNumber(value: string): number {
 export default function CompoundInterestCalculator() {
   const [initialCapital, setInitialCapital] = useState(1000);
   const [monthlyContribution, setMonthlyContribution] = useState(100);
-  const [annualRatePercent, setAnnualRatePercent] = useState(7);
+  const { value: annualRatePercent, setValue: setAnnualRatePercent, hint: rateHint } =
+    useAnnualRateSuggestion(7);
   const [years, setYears] = useState(10);
 
   const initialCapitalId = useId();
@@ -63,15 +65,18 @@ export default function CompoundInterestCalculator() {
           onChange={(raw) => setMonthlyContribution(toNonNegativeNumber(raw))}
         />
 
-        <NumberField
-          id={annualRateId}
-          name="annualRatePercent"
-          label="Tasa de interés anual (%)"
-          max={30}
-          step={0.1}
-          value={annualRatePercent}
-          onChange={(raw) => setAnnualRatePercent(toNonNegativeNumber(raw))}
-        />
+        <div className="flex flex-col gap-1.5">
+          <NumberField
+            id={annualRateId}
+            name="annualRatePercent"
+            label="Tasa de interés anual (%)"
+            max={30}
+            step={0.1}
+            value={annualRatePercent}
+            onChange={setAnnualRatePercent}
+          />
+          {rateHint && <p className="text-xs text-foreground/50">{rateHint}</p>}
+        </div>
 
         <NumberField
           id={yearsId}

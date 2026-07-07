@@ -5,6 +5,7 @@ import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import { calculateFeeImpact } from "@/lib/feeImpact";
 import { formatEuros } from "@/lib/formatCurrency";
+import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
 
 const FeeImpactChart = dynamic(() => import("./FeeImpactChart"), {
   ssr: false,
@@ -31,7 +32,11 @@ function toNonNegativeNumber(value: string): number {
 
 export default function FeeImpactCalculator() {
   const [initialCapital, setInitialCapital] = useState(10000);
-  const [grossAnnualRatePercent, setGrossAnnualRatePercent] = useState(7);
+  const {
+    value: grossAnnualRatePercent,
+    setValue: setGrossAnnualRatePercent,
+    hint: rateHint,
+  } = useAnnualRateSuggestion(7);
   const [years, setYears] = useState(20);
   const [lowFeePercent, setLowFeePercent] = useState(0.2);
   const [mediumFeePercent, setMediumFeePercent] = useState(1);
@@ -73,15 +78,18 @@ export default function FeeImpactCalculator() {
           onChange={(raw) => setInitialCapital(toNonNegativeNumber(raw))}
         />
 
-        <NumberField
-          id={grossRateId}
-          name="grossAnnualRatePercent"
-          label="Rentabilidad anual esperada antes de comisiones (%)"
-          max={30}
-          step={0.1}
-          value={grossAnnualRatePercent}
-          onChange={(raw) => setGrossAnnualRatePercent(toNonNegativeNumber(raw))}
-        />
+        <div className="flex flex-col gap-1.5">
+          <NumberField
+            id={grossRateId}
+            name="grossAnnualRatePercent"
+            label="Rentabilidad anual esperada antes de comisiones (%)"
+            max={30}
+            step={0.1}
+            value={grossAnnualRatePercent}
+            onChange={setGrossAnnualRatePercent}
+          />
+          {rateHint && <p className="text-xs text-foreground/50">{rateHint}</p>}
+        </div>
 
         <NumberField
           id={yearsId}

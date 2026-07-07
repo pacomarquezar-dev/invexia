@@ -23,6 +23,18 @@ export default function Home() {
           </Link>
         ))}
       </div>
+
+      <div className="mt-12 flex flex-col items-center gap-3">
+        <p className="text-sm text-foreground/70">
+          ¿No sabes por dónde empezar?
+        </p>
+        <Link
+          href="/perfil-inversor"
+          className="rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:opacity-90"
+        >
+          Descubre tu perfil de inversor
+        </Link>
+      </div>
     </main>
   );
 }

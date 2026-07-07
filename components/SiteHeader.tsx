@@ -13,6 +13,12 @@ export default function SiteHeader() {
         >
           Calculadoras
         </Link>
+        <Link
+          href="/perfil-inversor"
+          className="text-sm font-medium text-foreground/70 hover:text-foreground"
+        >
+          Test de perfil
+        </Link>
       </nav>
     </header>
   );

@@ -5,6 +5,7 @@ import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import { calculateDcaVsLumpSum } from "@/lib/dcaVsLumpSum";
 import { formatEuros } from "@/lib/formatCurrency";
+import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
 
 const DcaVsLumpSumChart = dynamic(() => import("./DcaVsLumpSumChart"), {
   ssr: false,
@@ -28,7 +29,8 @@ function toNonNegativeNumber(value: string): number {
 export default function DcaVsLumpSumCalculator() {
   const [totalCapital, setTotalCapital] = useState(12000);
   const [years, setYears] = useState(10);
-  const [annualRatePercent, setAnnualRatePercent] = useState(7);
+  const { value: annualRatePercent, setValue: setAnnualRatePercent, hint: rateHint } =
+    useAnnualRateSuggestion(7);
 
   const totalCapitalId = useId();
   const yearsId = useId();
@@ -68,15 +70,18 @@ export default function DcaVsLumpSumCalculator() {
           }}
         />
 
-        <NumberField
-          id={annualRateId}
-          name="annualRatePercent"
-          label="Rentabilidad anual esperada (%)"
-          max={30}
-          step={0.1}
-          value={annualRatePercent}
-          onChange={(raw) => setAnnualRatePercent(toNonNegativeNumber(raw))}
-        />
+        <div className="flex flex-col gap-1.5">
+          <NumberField
+            id={annualRateId}
+            name="annualRatePercent"
+            label="Rentabilidad anual esperada (%)"
+            max={30}
+            step={0.1}
+            value={annualRatePercent}
+            onChange={setAnnualRatePercent}
+          />
+          {rateHint && <p className="text-xs text-foreground/50">{rateHint}</p>}
+        </div>
       </form>
 
       <div className="flex flex-col gap-6">
