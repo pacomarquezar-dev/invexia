@@ -60,22 +60,25 @@ export default function RootLayout({
     >
       <head>
         {/*
-          Etiqueta de verificación de propiedad de Google AdSense. Debe quedar
-          como HTML estático literal (no via next/script) para que el rastreador
-          de verificación la encuentre al hacer fetch de la página sin ejecutar JS.
-          Usa "defer" en vez de "async": sigue sin bloquear el parseo del HTML,
-          pero retrasa su ejecución hasta después de parsear el documento, para
-          que no compita por el hilo principal con el renderizado inicial.
-          "fetchPriority=low" evita que compita por ancho de banda con el CSS/
-          fuentes durante la carga crítica, ayudando a que el LCP (texto, ya
-          presente en el HTML) pinte antes de que este script empiece a ejecutar.
+          Etiqueta de verificación de propiedad de Google AdSense. El "src" debe
+          quedar como HTML estático literal (no via next/script) para que el
+          rastreador de verificación lo encuentre al hacer fetch de la página
+          sin ejecutar JS. type="text/plain" evita que el navegador la
+          descargue/ejecute automáticamente: medido con Lighthouse, el motor de
+          Auto-ads de Google ocupaba el hilo principal justo cuando el texto ya
+          listo del hero debía pintarse (LCP), retrasándolo ~1.1s. El script de
+          más abajo la activa de verdad en cuanto el navegador queda inactivo
+          tras el primer pintado.
         */}
         <script
+          type="text/plain"
           defer
-          fetchPriority="low"
+          data-adsense-placeholder=""
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4889342992901227"
-          crossOrigin="anonymous"
         />
+        <script
+          suppressHydrationWarning
+        >{`(function(){function load(){var p=document.querySelector('script[data-adsense-placeholder]');if(!p)return;var s=document.createElement('script');s.src=p.getAttribute('src');s.crossOrigin='anonymous';s.async=true;document.head.appendChild(s);}if('requestIdleCallback'in window){requestIdleCallback(load,{timeout:3000});}else{window.addEventListener('load',function(){setTimeout(load,1);});}})();`}</script>
       </head>
       <body className="min-h-full flex flex-col">
         <SiteHeader />
