@@ -66,9 +66,13 @@ export default function RootLayout({
           Usa "defer" en vez de "async": sigue sin bloquear el parseo del HTML,
           pero retrasa su ejecución hasta después de parsear el documento, para
           que no compita por el hilo principal con el renderizado inicial.
+          "fetchPriority=low" evita que compita por ancho de banda con el CSS/
+          fuentes durante la carga crítica, ayudando a que el LCP (texto, ya
+          presente en el HTML) pinte antes de que este script empiece a ejecutar.
         */}
         <script
           defer
+          fetchPriority="low"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4889342992901227"
           crossOrigin="anonymous"
         />
