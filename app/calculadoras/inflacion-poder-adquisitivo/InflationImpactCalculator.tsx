@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import type { DonutChartSlice } from "@/components/DonutChart";
 import { calculateInflationImpact } from "@/lib/inflationImpact";
 import { formatEuros } from "@/lib/formatCurrency";
 
@@ -10,6 +11,15 @@ const InflationImpactChart = dynamic(() => import("./InflationImpactChart"), {
   ssr: false,
   loading: () => (
     <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+      Cargando gráfico…
+    </div>
+  ),
+});
+
+const DonutChart = dynamic(() => import("@/components/DonutChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[280px] items-center justify-center text-sm text-foreground/50">
       Cargando gráfico…
     </div>
   ),
@@ -38,6 +48,15 @@ export default function InflationImpactCalculator() {
     () => calculateInflationImpact({ currentAmount, annualInflationRatePercent, years }),
     [currentAmount, annualInflationRatePercent, years],
   );
+
+  const donutData: DonutChartSlice[] = [
+    { name: "Valor conservado", value: result.adjustedValue, color: "#2563eb" },
+    {
+      name: "Poder adquisitivo perdido",
+      value: result.purchasingPowerLossAbsolute,
+      color: "#dc2626",
+    },
+  ];
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
@@ -93,6 +112,8 @@ export default function InflationImpactCalculator() {
         </div>
 
         <InflationImpactChart evolution={result.evolution} nominalAmount={currentAmount} />
+
+        <DonutChart data={donutData} total={currentAmount} totalLabel="Cantidad actual" />
       </div>
     </div>
   );

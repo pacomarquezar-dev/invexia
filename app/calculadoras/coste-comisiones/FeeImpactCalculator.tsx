@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import type { DonutChartSlice } from "@/components/DonutChart";
 import { calculateFeeImpact } from "@/lib/feeImpact";
 import { formatEuros } from "@/lib/formatCurrency";
 import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
@@ -11,6 +12,15 @@ const FeeImpactChart = dynamic(() => import("./FeeImpactChart"), {
   ssr: false,
   loading: () => (
     <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+      Cargando gráfico…
+    </div>
+  ),
+});
+
+const DonutChart = dynamic(() => import("@/components/DonutChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[280px] items-center justify-center text-sm text-foreground/50">
       Cargando gráfico…
     </div>
   ),
@@ -65,6 +75,11 @@ export default function FeeImpactCalculator() {
   const lowLabel = `Comisión baja (${formatPercent(lowFeePercent)})`;
   const mediumLabel = `Comisión media (${formatPercent(mediumFeePercent)})`;
   const highLabel = `Comisión alta (${formatPercent(highFeePercent)})`;
+
+  const donutData: DonutChartSlice[] = [
+    { name: "Capital conservado", value: result.high.finalCapital, color: "#2563eb" },
+    { name: "Coste de la comisión", value: result.highFeeCost, color: "#dc2626" },
+  ];
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
@@ -173,6 +188,12 @@ export default function FeeImpactCalculator() {
           lowLabel={lowLabel}
           mediumLabel={mediumLabel}
           highLabel={highLabel}
+        />
+
+        <DonutChart
+          data={donutData}
+          total={result.high.finalCapital + result.highFeeCost}
+          totalLabel="Capital final sin comisiones"
         />
       </div>
     </div>

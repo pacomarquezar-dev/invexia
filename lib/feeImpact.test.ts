@@ -47,6 +47,23 @@ describe("calculateFeeImpact", () => {
     expect(result.lowVsHighDifference).toBeCloseTo(1348.67, 1);
   });
 
+  it("calcula el coste de la comisión alta frente a un escenario sin comisiones", () => {
+    // 12% anual (1% mensual): 1.01^12 = 1.126825030131969 -> sin comisión: 10000 * eso = 11268.250301...
+    // Con comisión alta = 12% (igual a la rentabilidad bruta), rentabilidad neta = 0% -> capital final = 10000 (exacto)
+    // Coste de la comisión = 11268.250301... - 10000 = 1268.250301...
+    const result = calculateFeeImpact({
+      initialCapital: 10000,
+      grossAnnualRatePercent: 12,
+      years: 1,
+      lowFeePercent: 0.2,
+      mediumFeePercent: 6,
+      highFeePercent: 12,
+    });
+
+    expect(result.high.finalCapital).toBe(10000);
+    expect(result.highFeeCost).toBeCloseTo(1268.25, 1);
+  });
+
   it("una comisión más alta nunca produce un capital final mayor", () => {
     const result = calculateFeeImpact({
       initialCapital: 20000,

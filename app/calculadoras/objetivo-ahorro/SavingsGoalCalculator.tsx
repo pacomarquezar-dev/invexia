@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import type { DonutChartSlice } from "@/components/DonutChart";
 import { calculateSavingsGoal } from "@/lib/savingsGoal";
 import { formatEuros } from "@/lib/formatCurrency";
 
@@ -10,6 +11,15 @@ const YearlyCapitalChart = dynamic(() => import("@/components/YearlyCapitalChart
   ssr: false,
   loading: () => (
     <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+      Cargando gráfico…
+    </div>
+  ),
+});
+
+const DonutChart = dynamic(() => import("@/components/DonutChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[280px] items-center justify-center text-sm text-foreground/50">
       Cargando gráfico…
     </div>
   ),
@@ -35,6 +45,15 @@ export default function SavingsGoalCalculator() {
     () => calculateSavingsGoal({ targetAmount, years, annualRatePercent, initialCapital }),
     [targetAmount, years, annualRatePercent, initialCapital],
   );
+
+  const donutData: DonutChartSlice[] = [
+    { name: "Total aportado", value: result.totalContributed, color: "#2563eb" },
+    {
+      name: "Intereses generados",
+      value: result.finalCapital - result.totalContributed,
+      color: "#16a34a",
+    },
+  ];
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
@@ -101,6 +120,8 @@ export default function SavingsGoalCalculator() {
           evolution={result.evolution}
           referenceLine={{ value: targetAmount, label: "Objetivo" }}
         />
+
+        <DonutChart data={donutData} total={result.finalCapital} totalLabel="Capital final estimado" />
       </div>
     </div>
   );

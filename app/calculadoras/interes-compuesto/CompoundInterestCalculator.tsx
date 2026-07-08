@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import type { DonutChartSlice } from "@/components/DonutChart";
 import { calculateCompoundInterest } from "@/lib/compoundInterest";
 import { formatEuros } from "@/lib/formatCurrency";
 import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
@@ -11,6 +12,15 @@ const YearlyCapitalChart = dynamic(() => import("@/components/YearlyCapitalChart
   ssr: false,
   loading: () => (
     <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+      Cargando gráfico…
+    </div>
+  ),
+});
+
+const DonutChart = dynamic(() => import("@/components/DonutChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[280px] items-center justify-center text-sm text-foreground/50">
       Cargando gráfico…
     </div>
   ),
@@ -43,6 +53,16 @@ export default function CompoundInterestCalculator() {
       }),
     [initialCapital, monthlyContribution, annualRatePercent, years],
   );
+
+  const donutData: DonutChartSlice[] = [
+    { name: "Capital inicial", value: initialCapital, color: "#71717a" },
+    {
+      name: "Aportaciones acumuladas",
+      value: result.totalContributed - initialCapital,
+      color: "#2563eb",
+    },
+    { name: "Intereses generados", value: result.totalInterest, color: "#16a34a" },
+  ];
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
@@ -109,6 +129,12 @@ export default function CompoundInterestCalculator() {
         </div>
 
         <YearlyCapitalChart evolution={result.evolution} />
+
+        <DonutChart
+          data={donutData}
+          total={result.finalCapital}
+          totalLabel="Capital final estimado"
+        />
       </div>
     </div>
   );

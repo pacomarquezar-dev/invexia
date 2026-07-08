@@ -35,6 +35,8 @@ export interface FeeImpactResult {
   high: FeeScenarioResult;
   /** Capital final del escenario bajo menos el del alto, en euros. */
   lowVsHighDifference: number;
+  /** Capital final sin comisiones menos el del escenario de comisión alta: el coste que suponen esas comisiones. */
+  highFeeCost: number;
   evolution: FeeImpactYearPoint[];
 }
 
@@ -79,6 +81,7 @@ export function calculateFeeImpact({
     years,
   );
   const high = calculateScenario(initialCapital, grossAnnualRatePercent, highFeePercent, years);
+  const noFee = calculateScenario(initialCapital, grossAnnualRatePercent, 0, years);
 
   const evolution: FeeImpactYearPoint[] = low.evolution.map((point, index) => ({
     year: point.year,
@@ -92,6 +95,7 @@ export function calculateFeeImpact({
     medium: medium.scenario,
     high: high.scenario,
     lowVsHighDifference: low.scenario.finalCapital - high.scenario.finalCapital,
+    highFeeCost: noFee.scenario.finalCapital - high.scenario.finalCapital,
     evolution,
   };
 }
