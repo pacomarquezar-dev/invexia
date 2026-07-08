@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ChatWidgetLoader from "@/components/ChatWidgetLoader";
@@ -85,6 +86,7 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <ChatWidgetLoader />
+        <Analytics />
       </body>
     </html>
   );
