@@ -63,9 +63,12 @@ export default function RootLayout({
           Etiqueta de verificación de propiedad de Google AdSense. Debe quedar
           como HTML estático literal (no via next/script) para que el rastreador
           de verificación la encuentre al hacer fetch de la página sin ejecutar JS.
+          Usa "defer" en vez de "async": sigue sin bloquear el parseo del HTML,
+          pero retrasa su ejecución hasta después de parsear el documento, para
+          que no compita por el hilo principal con el renderizado inicial.
         */}
         <script
-          async
+          defer
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4889342992901227"
           crossOrigin="anonymous"
         />
