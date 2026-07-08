@@ -5,8 +5,9 @@ const isDev = process.env.NODE_ENV === "development";
 // React needs eval() in development for debugging features (e.g. reconstructing
 // component stacks); it never uses eval() in production builds.
 const scriptSrc = isDev
-  ? "'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com"
-  : "'self' 'unsafe-inline' https://pagead2.googlesyndication.com";
+  ? "'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com"
+  : "'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com";
+const frameSrc = "'self' https://fundingchoicesmessages.google.com";
 
 const securityHeaders = [
   {
@@ -23,7 +24,7 @@ const securityHeaders = [
   },
   {
     key: "Content-Security-Policy",
-    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';`,
+    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; frame-src ${frameSrc}; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';`,
   },
 ];
 
