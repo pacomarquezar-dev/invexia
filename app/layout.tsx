@@ -58,6 +58,18 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {/*
+          Etiqueta de verificación de propiedad de Google AdSense. Debe quedar
+          como HTML estático literal (no via next/script) para que el rastreador
+          de verificación la encuentre al hacer fetch de la página sin ejecutar JS.
+        */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4889342992901227"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <SiteHeader />
         {children}

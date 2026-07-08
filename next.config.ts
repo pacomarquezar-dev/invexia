@@ -4,7 +4,9 @@ const isDev = process.env.NODE_ENV === "development";
 
 // React needs eval() in development for debugging features (e.g. reconstructing
 // component stacks); it never uses eval() in production builds.
-const scriptSrc = isDev ? "'self' 'unsafe-inline' 'unsafe-eval'" : "'self' 'unsafe-inline'";
+const scriptSrc = isDev
+  ? "'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com"
+  : "'self' 'unsafe-inline' https://pagead2.googlesyndication.com";
 
 const securityHeaders = [
   {
