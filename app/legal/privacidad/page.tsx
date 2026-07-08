@@ -59,11 +59,14 @@ export default function PrivacidadPage() {
           <h2 className="text-xl font-semibold text-foreground">4. Datos de analítica</h2>
           <p>
             {/* PLACEHOLDER: actualizar esta sección si se integra Google Analytics, AdSense u otra herramienta de medición o publicidad */}
-            Actualmente este sitio no utiliza herramientas de analítica ni publicidad que
-            recojan datos personales de navegación. Si en el futuro se incorpora algún servicio
-            de este tipo (por ejemplo, para medir visitas de forma agregada o mostrar
-            publicidad), esta política se actualizará para explicar qué datos se recogen, con
-            qué finalidad y cómo puedes gestionar tu consentimiento. Consulta también la{" "}
+            Este sitio usa Vercel Web Analytics para saber, de forma agregada, qué páginas se
+            visitan más. Este servicio no utiliza cookies, no almacena direcciones IP ni ningún
+            otro dato que permita identificarte, y no realiza seguimiento entre sitios web: los
+            datos que recoge están anonimizados y solo sirven para entender el tráfico general
+            del sitio, nunca para identificar a un usuario concreto. Si en el futuro se incorpora
+            algún otro servicio de este tipo (por ejemplo, para mostrar publicidad), esta
+            política se actualizará para explicar qué datos se recogen, con qué finalidad y cómo
+            puedes gestionar tu consentimiento. Consulta también la{" "}
             <a href="/legal/cookies" className="underline hover:text-foreground">
               política de cookies
             </a>

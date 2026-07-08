@@ -4,8 +4,11 @@ const isDev = process.env.NODE_ENV === "development";
 
 // React needs eval() in development for debugging features (e.g. reconstructing
 // component stacks); it never uses eval() in production builds.
+// @vercel/analytics is same-origin in production (/_vercel/insights/script.js,
+// already covered by 'self'); only its local dev debug build comes from
+// va.vercel-scripts.com, so that domain is only needed in the dev CSP.
 const scriptSrc = isDev
-  ? "'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com"
+  ? "'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://va.vercel-scripts.com"
   : "'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com";
 const frameSrc = "'self' https://fundingchoicesmessages.google.com";
 const connectSrc = "'self' https://fundingchoicesmessages.google.com";
