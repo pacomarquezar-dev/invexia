@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import LazyOnVisible from "@/components/LazyOnVisible";
 import type { DonutChartSlice } from "@/components/DonutChart";
 import { calculateCompoundInterest } from "@/lib/compoundInterest";
 import { formatEuros } from "@/lib/formatCurrency";
@@ -128,13 +129,29 @@ export default function CompoundInterestCalculator() {
           </dl>
         </div>
 
-        <YearlyCapitalChart evolution={result.evolution} />
+        <LazyOnVisible
+          placeholder={
+            <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+              Cargando gráfico…
+            </div>
+          }
+        >
+          <YearlyCapitalChart evolution={result.evolution} />
+        </LazyOnVisible>
 
-        <DonutChart
-          data={donutData}
-          total={result.finalCapital}
-          totalLabel="Capital final estimado"
-        />
+        <LazyOnVisible
+          placeholder={
+            <div className="flex h-[280px] items-center justify-center text-sm text-foreground/50">
+              Cargando gráfico…
+            </div>
+          }
+        >
+          <DonutChart
+            data={donutData}
+            total={result.finalCapital}
+            totalLabel="Capital final estimado"
+          />
+        </LazyOnVisible>
       </div>
     </div>
   );

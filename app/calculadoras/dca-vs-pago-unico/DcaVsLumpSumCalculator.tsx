@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import LazyOnVisible from "@/components/LazyOnVisible";
 import { calculateDcaVsLumpSum } from "@/lib/dcaVsLumpSum";
 import { formatEuros } from "@/lib/formatCurrency";
 import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
@@ -110,7 +111,15 @@ export default function DcaVsLumpSumCalculator() {
           </p>
         </div>
 
-        <DcaVsLumpSumChart evolution={result.evolution} />
+        <LazyOnVisible
+          placeholder={
+            <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+              Cargando gráfico…
+            </div>
+          }
+        >
+          <DcaVsLumpSumChart evolution={result.evolution} />
+        </LazyOnVisible>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import LazyOnVisible from "@/components/LazyOnVisible";
 import { calculateFireNumber } from "@/lib/fireNumber";
 import { formatEuros } from "@/lib/formatCurrency";
 
@@ -122,10 +123,18 @@ export default function FireNumberCalculator() {
         </div>
 
         {result.achievable ? (
-          <YearlyCapitalChart
-            evolution={result.evolution}
-            referenceLine={{ value: result.fireNumber, label: "Número FIRE" }}
-          />
+          <LazyOnVisible
+            placeholder={
+              <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+                Cargando gráfico…
+              </div>
+            }
+          >
+            <YearlyCapitalChart
+              evolution={result.evolution}
+              referenceLine={{ value: result.fireNumber, label: "Número FIRE" }}
+            />
+          </LazyOnVisible>
         ) : (
           <div className="flex h-[320px] items-center justify-center rounded-lg border border-foreground/10 text-sm text-foreground/50">
             No hay evolución que mostrar sin ahorro ni aportación que crezcan.

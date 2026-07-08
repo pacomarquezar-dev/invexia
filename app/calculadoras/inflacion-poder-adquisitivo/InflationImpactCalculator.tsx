@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
+import LazyOnVisible from "@/components/LazyOnVisible";
 import type { DonutChartSlice } from "@/components/DonutChart";
 import { calculateInflationImpact } from "@/lib/inflationImpact";
 import { formatEuros } from "@/lib/formatCurrency";
@@ -111,9 +112,25 @@ export default function InflationImpactCalculator() {
           </p>
         </div>
 
-        <InflationImpactChart evolution={result.evolution} nominalAmount={currentAmount} />
+        <LazyOnVisible
+          placeholder={
+            <div className="flex h-[320px] items-center justify-center text-sm text-foreground/50">
+              Cargando gráfico…
+            </div>
+          }
+        >
+          <InflationImpactChart evolution={result.evolution} nominalAmount={currentAmount} />
+        </LazyOnVisible>
 
-        <DonutChart data={donutData} total={currentAmount} totalLabel="Cantidad actual" />
+        <LazyOnVisible
+          placeholder={
+            <div className="flex h-[280px] items-center justify-center text-sm text-foreground/50">
+              Cargando gráfico…
+            </div>
+          }
+        >
+          <DonutChart data={donutData} total={currentAmount} totalLabel="Cantidad actual" />
+        </LazyOnVisible>
       </div>
     </div>
   );
