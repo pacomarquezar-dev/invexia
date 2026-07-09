@@ -4,7 +4,10 @@ import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import LazyOnVisible from "@/components/LazyOnVisible";
+import Card from "@/components/Card";
+import ResultHighlight from "@/components/ResultHighlight";
 import type { DonutChartSlice } from "@/components/DonutChart";
+import { DONUT_HERO_COLOR, DONUT_LOSS_COLOR } from "@/lib/donutColors";
 import { calculateInflationImpact } from "@/lib/inflationImpact";
 import { formatEuros } from "@/lib/formatCurrency";
 
@@ -51,17 +54,17 @@ export default function InflationImpactCalculator() {
   );
 
   const donutData: DonutChartSlice[] = [
-    { name: "Valor conservado", value: result.adjustedValue, color: "#2563eb" },
+    { name: "Valor conservado", value: result.adjustedValue, color: DONUT_HERO_COLOR },
     {
       name: "Poder adquisitivo perdido",
       value: result.purchasingPowerLossAbsolute,
-      color: "#dc2626",
+      color: DONUT_LOSS_COLOR,
     },
   ];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
-      <form className="flex flex-col gap-5" aria-label="Datos de la simulación">
+    <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+      <Card as="form" className="flex flex-col gap-5" aria-label="Datos de la simulación">
         <NumberField
           id={currentAmountId}
           name="currentAmount"
@@ -95,22 +98,18 @@ export default function InflationImpactCalculator() {
             setYears(Math.min(60, Math.max(1, parsed || 1)));
           }}
         />
-      </form>
+      </Card>
 
       <div className="flex flex-col gap-6">
-        <div aria-live="polite" className="rounded-lg border border-foreground/10 p-5">
-          <p className="text-sm text-foreground/70">Valor ajustado por inflación</p>
-          <p className="text-3xl font-semibold tracking-tight">
-            {formatEuros(result.adjustedValue)}
-          </p>
-          <p className="mt-4 text-sm text-foreground/70">
+        <ResultHighlight label="Valor ajustado por inflación" value={formatEuros(result.adjustedValue)}>
+          <p className="mt-4 text-sm text-muted">
             Pérdida de poder adquisitivo:{" "}
             <span className="font-medium text-foreground">
               {formatEuros(result.purchasingPowerLossAbsolute)}
             </span>{" "}
             ({percentFormatter.format(result.purchasingPowerLossPercent)}%)
           </p>
-        </div>
+        </ResultHighlight>
 
         <LazyOnVisible
           placeholder={

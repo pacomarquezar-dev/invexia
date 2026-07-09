@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import LazyOnVisible from "@/components/LazyOnVisible";
+import Card from "@/components/Card";
+import ResultHighlight from "@/components/ResultHighlight";
 import { calculateFireNumber } from "@/lib/fireNumber";
 import { formatEuros } from "@/lib/formatCurrency";
 
@@ -52,8 +54,8 @@ export default function FireNumberCalculator() {
   );
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
-      <form className="flex flex-col gap-5" aria-label="Datos de la simulación">
+    <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+      <Card as="form" className="flex flex-col gap-5" aria-label="Datos de la simulación">
         <NumberField
           id={annualExpensesId}
           name="annualExpenses"
@@ -101,26 +103,23 @@ export default function FireNumberCalculator() {
           value={annualRatePercent}
           onChange={(raw) => setAnnualRatePercent(toNonNegativeNumber(raw))}
         />
-      </form>
+      </Card>
 
       <div className="flex flex-col gap-6">
-        <div aria-live="polite" className="rounded-lg border border-foreground/10 p-5">
-          <p className="text-sm text-foreground/70">Tu número FIRE</p>
-          <p className="text-3xl font-semibold tracking-tight">{formatEuros(result.fireNumber)}</p>
-
-          <p className="mt-4 text-sm text-foreground/70">
-            {result.achievable ? (
-              <>
-                Años estimados para alcanzarlo:{" "}
-                <span className="font-medium text-foreground">
-                  {yearsFormatter.format(result.yearsToTarget ?? 0)}
-                </span>
-              </>
-            ) : (
-              "Con estos datos no llegarías a alcanzar tu número FIRE: necesitas ahorro inicial o aportación mensual (y que crezcan con el tiempo)."
-            )}
-          </p>
-        </div>
+        {result.achievable ? (
+          <ResultHighlight
+            label="Años estimados para alcanzar tu número FIRE"
+            value={`${yearsFormatter.format(result.yearsToTarget ?? 0)} años`}
+            stats={[{ label: "Tu número FIRE", value: formatEuros(result.fireNumber) }]}
+          />
+        ) : (
+          <ResultHighlight label="Tu número FIRE" value={formatEuros(result.fireNumber)}>
+            <p className="mt-4 text-sm text-muted">
+              Con estos datos no llegarías a alcanzar tu número FIRE: necesitas ahorro inicial o
+              aportación mensual (y que crezcan con el tiempo).
+            </p>
+          </ResultHighlight>
+        )}
 
         {result.achievable ? (
           <LazyOnVisible

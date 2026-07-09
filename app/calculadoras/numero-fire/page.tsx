@@ -3,9 +3,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import FireNumberCalculator from "./FireNumberCalculator";
 
 export const metadata: Metadata = {
-  title: "Calculadora del número FIRE",
+  title: "Calculadora del número FIRE: jubilación anticipada",
   description:
-    "Calcula tu número FIRE (independencia financiera): el capital que necesitas para vivir de tus inversiones, y cuántos años te faltan para alcanzarlo con tu ahorro y aportación actuales.",
+    "Calcula tu número FIRE y diseña tu plan de jubilación anticipada: el capital que necesitas para vivir de tus inversiones, y cuántos años te faltan para alcanzarlo con tu ahorro y aportación actuales.",
   alternates: {
     canonical: "/calculadoras/numero-fire",
   },
@@ -22,13 +22,13 @@ export default function NumeroFirePage() {
             { label: "Número FIRE" },
           ]}
         />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Calculadora del número FIRE
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          Calculadora del número FIRE para tu jubilación anticipada
         </h1>
-        <p className="max-w-2xl text-foreground/70">
+        <p className="max-w-2xl text-lg leading-7 text-muted">
           Introduce el gasto anual que quieres cubrir con tus inversiones y la tasa de retirada
           segura para calcular tu número FIRE. Con tu ahorro y aportación mensual actuales, te
-          decimos cuántos años te faltan para alcanzarlo.
+          decimos cuántos años te faltan para alcanzar tu jubilación anticipada.
         </p>
       </div>
 

@@ -22,10 +22,10 @@ export default function ObjetivoAhorroPage() {
             { label: "Objetivo de ahorro" },
           ]}
         />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Calculadora de objetivo de ahorro
         </h1>
-        <p className="max-w-2xl text-foreground/70">
+        <p className="max-w-2xl text-lg leading-7 text-muted">
           Introduce la cantidad que quieres alcanzar, el plazo del que dispones, la
           rentabilidad anual esperada y lo que ya tengas ahorrado. Te decimos cuánto tienes que
           aportar cada mes para llegar a tu objetivo.

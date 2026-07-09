@@ -4,7 +4,10 @@ import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import LazyOnVisible from "@/components/LazyOnVisible";
+import Card from "@/components/Card";
+import ResultHighlight from "@/components/ResultHighlight";
 import type { DonutChartSlice } from "@/components/DonutChart";
+import { DONUT_HERO_COLOR, DONUT_LOSS_COLOR } from "@/lib/donutColors";
 import { calculateFeeImpact } from "@/lib/feeImpact";
 import { formatEuros } from "@/lib/formatCurrency";
 import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
@@ -78,13 +81,13 @@ export default function FeeImpactCalculator() {
   const highLabel = `Comisión alta (${formatPercent(highFeePercent)})`;
 
   const donutData: DonutChartSlice[] = [
-    { name: "Capital conservado", value: result.high.finalCapital, color: "#2563eb" },
-    { name: "Coste de la comisión", value: result.highFeeCost, color: "#dc2626" },
+    { name: "Capital conservado", value: result.high.finalCapital, color: DONUT_HERO_COLOR },
+    { name: "Coste de la comisión", value: result.highFeeCost, color: DONUT_LOSS_COLOR },
   ];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
-      <form className="flex flex-col gap-5" aria-label="Datos de la simulación">
+    <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+      <Card as="form" className="flex flex-col gap-5" aria-label="Datos de la simulación">
         <NumberField
           id={initialCapitalId}
           name="initialCapital"
@@ -151,38 +154,34 @@ export default function FeeImpactCalculator() {
           value={highFeePercent}
           onChange={(raw) => setHighFeePercent(toNonNegativeNumber(raw))}
         />
-      </form>
+      </Card>
 
       <div className="flex flex-col gap-6">
-        <div aria-live="polite" className="rounded-lg border border-foreground/10 p-5">
-          <div className="grid grid-cols-3 gap-3">
+        <ResultHighlight
+          label="Diferencia entre comisión baja y alta"
+          value={formatEuros(result.lowVsHighDifference)}
+        >
+          <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border pt-4">
             <div>
-              <p className="text-xs text-foreground/70">{lowLabel}</p>
-              <p className="text-xl font-semibold tracking-tight">
+              <p className="text-xs text-muted">{lowLabel}</p>
+              <p className="text-lg font-semibold tracking-tight text-foreground">
                 {formatEuros(result.low.finalCapital)}
               </p>
             </div>
             <div>
-              <p className="text-xs text-foreground/70">{mediumLabel}</p>
-              <p className="text-xl font-semibold tracking-tight">
+              <p className="text-xs text-muted">{mediumLabel}</p>
+              <p className="text-lg font-semibold tracking-tight text-foreground">
                 {formatEuros(result.medium.finalCapital)}
               </p>
             </div>
             <div>
-              <p className="text-xs text-foreground/70">{highLabel}</p>
-              <p className="text-xl font-semibold tracking-tight">
+              <p className="text-xs text-muted">{highLabel}</p>
+              <p className="text-lg font-semibold tracking-tight text-foreground">
                 {formatEuros(result.high.finalCapital)}
               </p>
             </div>
           </div>
-
-          <p className="mt-4 text-sm text-foreground/70">
-            Diferencia entre comisión baja y alta:{" "}
-            <span className="font-medium text-foreground">
-              {formatEuros(result.lowVsHighDifference)}
-            </span>
-          </p>
-        </div>
+        </ResultHighlight>
 
         <LazyOnVisible
           placeholder={

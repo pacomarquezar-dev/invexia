@@ -23,10 +23,10 @@ export default function DcaVsPagoUnicoPage() {
             { label: "DCA vs pago único" },
           ]}
         />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           DCA vs pago único
         </h1>
-        <p className="max-w-2xl text-foreground/70">
+        <p className="max-w-2xl text-lg leading-7 text-muted">
           Introduce el capital total que quieres invertir, el horizonte temporal y la
           rentabilidad anual esperada. Compara invertirlo todo de golpe frente a repartirlo en
           aportaciones mensuales iguales a lo largo del tiempo.

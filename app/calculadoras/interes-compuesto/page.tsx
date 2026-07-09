@@ -6,7 +6,7 @@ import CompoundInterestCalculator from "./CompoundInterestCalculator";
 export const metadata: Metadata = {
   title: "Calculadora de interés compuesto",
   description:
-    "Calcula cuánto puede crecer tu dinero con el interés compuesto. Introduce tu capital inicial, aportación mensual, tasa de interés y años, y consulta la evolución de tu capital.",
+    "Esta calculadora de interés compuesto muestra cuánto puede crecer tu dinero. Introduce tu capital inicial, aportación mensual, tasa de interés y años, y consulta la evolución de tu capital.",
   alternates: {
     canonical: "/calculadoras/interes-compuesto",
   },
@@ -23,10 +23,10 @@ export default function InteresCompuestoPage() {
             { label: "Calculadora de interés compuesto" },
           ]}
         />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Calculadora de interés compuesto
         </h1>
-        <p className="max-w-2xl text-foreground/70">
+        <p className="max-w-2xl text-lg leading-7 text-muted">
           Introduce tu capital inicial, tu aportación mensual, la tasa de interés anual esperada
           y el número de años. Verás el capital final estimado y cómo evoluciona a lo largo del
           tiempo.

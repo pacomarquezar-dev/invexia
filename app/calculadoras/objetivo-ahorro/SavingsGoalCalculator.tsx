@@ -4,7 +4,10 @@ import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import LazyOnVisible from "@/components/LazyOnVisible";
+import Card from "@/components/Card";
+import ResultHighlight from "@/components/ResultHighlight";
 import type { DonutChartSlice } from "@/components/DonutChart";
+import { DONUT_HERO_COLOR, DONUT_MUTED_COLOR } from "@/lib/donutColors";
 import { calculateSavingsGoal } from "@/lib/savingsGoal";
 import { formatEuros } from "@/lib/formatCurrency";
 
@@ -48,17 +51,17 @@ export default function SavingsGoalCalculator() {
   );
 
   const donutData: DonutChartSlice[] = [
-    { name: "Total aportado", value: result.totalContributed, color: "#2563eb" },
+    { name: "Total aportado", value: result.totalContributed, color: DONUT_MUTED_COLOR },
     {
       name: "Intereses generados",
       value: result.finalCapital - result.totalContributed,
-      color: "#16a34a",
+      color: DONUT_HERO_COLOR,
     },
   ];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
-      <form className="flex flex-col gap-5" aria-label="Datos de la simulación">
+    <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+      <Card as="form" className="flex flex-col gap-5" aria-label="Datos de la simulación">
         <NumberField
           id={targetAmountId}
           name="targetAmount"
@@ -101,21 +104,17 @@ export default function SavingsGoalCalculator() {
           value={initialCapital}
           onChange={(raw) => setInitialCapital(toNonNegativeNumber(raw))}
         />
-      </form>
+      </Card>
 
       <div className="flex flex-col gap-6">
-        <div aria-live="polite" className="rounded-lg border border-foreground/10 p-5">
-          <p className="text-sm text-foreground/70">Aportación mensual necesaria</p>
-          <p className="text-3xl font-semibold tracking-tight">
-            {formatEuros(result.requiredMonthlyContribution)}
-          </p>
-          <dl className="mt-3 grid grid-cols-2 gap-2 text-sm text-foreground/70">
-            <dt>Total aportado</dt>
-            <dd className="text-right">{formatEuros(result.totalContributed)}</dd>
-            <dt>Capital final estimado</dt>
-            <dd className="text-right">{formatEuros(result.finalCapital)}</dd>
-          </dl>
-        </div>
+        <ResultHighlight
+          label="Aportación mensual necesaria"
+          value={formatEuros(result.requiredMonthlyContribution)}
+          stats={[
+            { label: "Total aportado", value: formatEuros(result.totalContributed) },
+            { label: "Capital final estimado", value: formatEuros(result.finalCapital) },
+          ]}
+        />
 
         <LazyOnVisible
           placeholder={

@@ -23,10 +23,10 @@ export default function CosteComisionesPage() {
             { label: "Coste real de las comisiones" },
           ]}
         />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Coste real de las comisiones a largo plazo
         </h1>
-        <p className="max-w-2xl text-foreground/70">
+        <p className="max-w-2xl text-lg leading-7 text-muted">
           Una comisión anual que parece pequeña puede suponer una diferencia enorme al cabo de
           los años. Introduce tu capital, la rentabilidad esperada y compara tres escenarios de
           comisión — bajo, medio y alto — para ver cuánto se lleva cada uno.

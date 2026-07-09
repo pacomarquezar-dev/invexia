@@ -23,10 +23,10 @@ export default function InflacionPoderAdquisitivoPage() {
             { label: "Inflación y poder adquisitivo" },
           ]}
         />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Calculadora de inflación y poder adquisitivo
         </h1>
-        <p className="max-w-2xl text-foreground/70">
+        <p className="max-w-2xl text-lg leading-7 text-muted">
           Introduce una cantidad de dinero, la inflación anual esperada y un número de años.
           Verás cuánto podrías comprar realmente con esa cantidad dentro de ese tiempo, en
           euros de hoy.

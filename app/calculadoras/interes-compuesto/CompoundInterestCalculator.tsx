@@ -4,7 +4,10 @@ import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
 import NumberField from "@/components/NumberField";
 import LazyOnVisible from "@/components/LazyOnVisible";
+import Card from "@/components/Card";
+import ResultHighlight from "@/components/ResultHighlight";
 import type { DonutChartSlice } from "@/components/DonutChart";
+import { DONUT_HERO_COLOR, DONUT_MUTED_COLOR } from "@/lib/donutColors";
 import { calculateCompoundInterest } from "@/lib/compoundInterest";
 import { formatEuros } from "@/lib/formatCurrency";
 import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
@@ -56,18 +59,18 @@ export default function CompoundInterestCalculator() {
   );
 
   const donutData: DonutChartSlice[] = [
-    { name: "Capital inicial", value: initialCapital, color: "#71717a" },
+    { name: "Capital inicial", value: initialCapital, color: DONUT_MUTED_COLOR },
     {
       name: "Aportaciones acumuladas",
       value: result.totalContributed - initialCapital,
-      color: "#2563eb",
+      color: DONUT_MUTED_COLOR,
     },
-    { name: "Intereses generados", value: result.totalInterest, color: "#16a34a" },
+    { name: "Intereses generados", value: result.totalInterest, color: DONUT_HERO_COLOR },
   ];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
-      <form className="flex flex-col gap-5" aria-label="Datos de la simulación">
+    <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+      <Card as="form" className="flex flex-col gap-5" aria-label="Datos de la simulación">
         <NumberField
           id={initialCapitalId}
           name="initialCapital"
@@ -96,7 +99,7 @@ export default function CompoundInterestCalculator() {
             value={annualRatePercent}
             onChange={setAnnualRatePercent}
           />
-          {rateHint && <p className="text-xs text-foreground/50">{rateHint}</p>}
+          {rateHint && <p className="text-xs text-muted">{rateHint}</p>}
         </div>
 
         <NumberField
@@ -113,21 +116,17 @@ export default function CompoundInterestCalculator() {
             setYears(Math.min(60, Math.max(1, parsed || 1)));
           }}
         />
-      </form>
+      </Card>
 
       <div className="flex flex-col gap-6">
-        <div aria-live="polite" className="rounded-lg border border-foreground/10 p-5">
-          <p className="text-sm text-foreground/70">Capital final estimado</p>
-          <p className="text-3xl font-semibold tracking-tight">
-            {formatEuros(result.finalCapital)}
-          </p>
-          <dl className="mt-3 grid grid-cols-2 gap-2 text-sm text-foreground/70">
-            <dt>Total aportado</dt>
-            <dd className="text-right">{formatEuros(result.totalContributed)}</dd>
-            <dt>Intereses generados</dt>
-            <dd className="text-right">{formatEuros(result.totalInterest)}</dd>
-          </dl>
-        </div>
+        <ResultHighlight
+          label="Capital final estimado"
+          value={formatEuros(result.finalCapital)}
+          stats={[
+            { label: "Total aportado", value: formatEuros(result.totalContributed) },
+            { label: "Intereses generados", value: formatEuros(result.totalInterest) },
+          ]}
+        />
 
         <LazyOnVisible
           placeholder={
