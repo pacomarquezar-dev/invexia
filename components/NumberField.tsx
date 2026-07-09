@@ -35,7 +35,7 @@ export default function NumberField({
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-sm font-medium">
+      <label htmlFor={id} className="text-sm font-medium text-foreground">
         {label}
       </label>
       <input
@@ -49,7 +49,7 @@ export default function NumberField({
         value={value}
         onChange={handleChange}
         onFocus={handleFocus}
-        className="rounded-md border border-foreground/20 bg-transparent px-3 py-2"
+        className="rounded-xl border border-border bg-background px-3 py-2 text-foreground focus-visible:border-accent"
       />
     </div>
   );

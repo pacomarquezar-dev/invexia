@@ -1,31 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0c0b;
+  --surface: #141816;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --foreground: #f5f6f5;
+  --muted: #9ca6a1;
+  --accent: #2ecc71;
+  --accent-hover: #1f9d57;
+  --accent-secondary: #9b7bfa;
+  --accent-secondary-light: #beA9fc;
+  --chart-green: #3ddc84;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border-subtle);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-secondary-light: var(--accent-secondary-light);
+  --color-chart-green: var(--chart-green);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 :focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* Textura decorativa de fondo: rejilla de puntos muy sutil, solo CSS (sin
+   peso adicional de imagen ni JS). Se aplica de forma selectiva en secciones
+   principales, no globalmente. */
+.bg-dot-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(245, 246, 245, 0.08) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
+
+/* Silueta de la marca (invexia-mark.png) rellena con un color plano
+   (currentColor), para usarla como marca de agua monocromática de baja
+   opacidad en vez del PNG a color. */
+.mark-silhouette {
+  background-color: currentColor;
+  -webkit-mask-image: url("/invexia-mark.png");
+  mask-image: url("/invexia-mark.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Pulso sutil del botón del chat: un resplandor morado que respira (nunca
+   desaparece del todo, solo crece y se atenúa) para que se note que el
+   botón es interactivo sin llamar demasiado la atención. box-shadow no
+   afecta al layout, así que no hay CLS. */
+@keyframes chat-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px 2px rgba(155, 123, 250, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 34px 10px rgba(155, 123, 250, 0.18);
+  }
+}
+
+.animate-chat-pulse {
+  animation: chat-pulse 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-chat-pulse {
+    animation: none;
+  }
+}
+
+/* Resplandor sutil del resultado principal de cada calculadora (mismo
+   lenguaje visual que el glow del segmento protagonista del donut). */
+.result-glow {
+  text-shadow: 0 0 28px rgba(61, 220, 132, 0.45);
 }
