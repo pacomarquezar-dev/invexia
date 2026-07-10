@@ -36,7 +36,8 @@ export async function callAnthropicChatModel({ system, messages }: CallAnthropic
   });
 
   if (!response.ok) {
-    throw new Error(`Anthropic API respondió con estado ${response.status}`);
+    const errorBody = await response.text().catch(() => "");
+    throw new Error(`Anthropic API respondió con estado ${response.status}: ${errorBody}`);
   }
 
   const data = (await response.json()) as AnthropicMessagesResponse;

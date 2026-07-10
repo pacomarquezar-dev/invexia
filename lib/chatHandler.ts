@@ -63,7 +63,8 @@ export async function handleChatRequest(
   try {
     const reply = await deps.callModel({ system, messages });
     return { status: 200, body: { reply } };
-  } catch {
+  } catch (error) {
+    console.error("Error al llamar al modelo de Anthropic:", error);
     return {
       status: 502,
       body: {
