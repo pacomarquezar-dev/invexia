@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import Card from "@/components/Card";
 
 export const metadata: Metadata = {
   title: "Política de cookies",
@@ -15,13 +16,13 @@ export default function CookiesPage() {
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-16">
       <div className="flex flex-col gap-3">
         <Breadcrumb items={[{ label: "Inicio", href: "/" }, { label: "Cookies" }]} />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Política de cookies
         </h1>
       </div>
 
-      <div className="flex flex-col gap-8 text-foreground/80">
-        <section className="flex flex-col gap-2">
+      <div className="flex flex-col gap-6 text-foreground/80">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">
             1. Qué usa Invexia actualmente
           </h2>
@@ -38,9 +39,9 @@ export default function CookiesPage() {
             puedas retomarlos si vuelves a visitar la página. No tiene ninguna finalidad de
             seguimiento ni se comparte con terceros.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">
             2. Cookies técnicas o funcionales
           </h2>
@@ -51,9 +52,9 @@ export default function CookiesPage() {
             imprescindibles para prestar el servicio y no se usan con fines de seguimiento ni
             publicitarios.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">
             3. Cookies de analítica y publicidad (previsión)
           </h2>
@@ -67,9 +68,9 @@ export default function CookiesPage() {
             actualizará con el detalle de cada cookie: su nombre, finalidad, duración y si es
             propia o de un tercero.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">
             4. Cómo gestionar o borrar el almacenamiento local
           </h2>
@@ -79,7 +80,7 @@ export default function CookiesPage() {
             &quot;datos de sitios&quot; o &quot;almacenamiento&quot;), sin que eso afecte a tu
             capacidad de seguir usando las calculadoras de Invexia.
           </p>
-        </section>
+        </Card>
       </div>
     </main>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import Card from "@/components/Card";
 
 export const metadata: Metadata = {
   title: "Aviso legal",
@@ -15,11 +16,13 @@ export default function AvisoLegalPage() {
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-16">
       <div className="flex flex-col gap-3">
         <Breadcrumb items={[{ label: "Inicio", href: "/" }, { label: "Aviso legal" }]} />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Aviso legal</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          Aviso legal
+        </h1>
       </div>
 
-      <div className="flex flex-col gap-8 text-foreground/80">
-        <section className="flex flex-col gap-2">
+      <div className="flex flex-col gap-6 text-foreground/80">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">1. Identificación del titular</h2>
           <p>
             En cumplimiento del deber de información recogido en el artículo 10 de la Ley
@@ -32,9 +35,9 @@ export default function AvisoLegalPage() {
             <li>Nombre: [FRANCISCO MÁRQUEZ ARENAS]</li>
             <li>Correo de contacto: [franciscomarare8@gmail.com]</li>
           </ul>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">2. Naturaleza del sitio</h2>
           <p>
             Invexia es un proyecto personal de carácter educativo. Su objetivo es ayudar a
@@ -43,9 +46,9 @@ export default function AvisoLegalPage() {
             entidad financiera, no presta servicios de inversión ni actúa como intermediario de
             ningún producto financiero.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">
             3. Condiciones de uso y exención de responsabilidad
           </h2>
@@ -63,9 +66,9 @@ export default function AvisoLegalPage() {
             cualquier decisión de inversión relevante, se recomienda consultar con un profesional
             debidamente habilitado.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">4. Propiedad intelectual</h2>
           <p>
             Los textos, el diseño, el código y demás elementos de este sitio son propiedad del
@@ -73,9 +76,9 @@ export default function AvisoLegalPage() {
             normativa de propiedad intelectual. No está permitida su reproducción total o parcial
             sin autorización expresa, salvo cita con enlace a la fuente original.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">5. Legislación aplicable</h2>
           <p>
             Las presentes condiciones se rigen por la legislación española. Cualquier
@@ -83,7 +86,7 @@ export default function AvisoLegalPage() {
             correspondan conforme a la normativa vigente en materia de protección de
             consumidores.
           </p>
-        </section>
+        </Card>
       </div>
     </main>
   );

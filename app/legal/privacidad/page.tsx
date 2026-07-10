@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import Card from "@/components/Card";
 
 export const metadata: Metadata = {
   title: "Política de privacidad",
@@ -15,13 +16,13 @@ export default function PrivacidadPage() {
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-16">
       <div className="flex flex-col gap-3">
         <Breadcrumb items={[{ label: "Inicio", href: "/" }, { label: "Privacidad" }]} />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Política de privacidad
         </h1>
       </div>
 
-      <div className="flex flex-col gap-8 text-foreground/80">
-        <section className="flex flex-col gap-2">
+      <div className="flex flex-col gap-6 text-foreground/80">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">
             1. No hay registro de usuarios ni base de datos
           </h2>
@@ -30,9 +31,9 @@ export default function PrivacidadPage() {
             herramientas. El sitio no tiene una base de datos propia y no almacena en ningún
             servidor información que te identifique personalmente.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">
             2. Resultados de calculadoras y test de perfil
           </h2>
@@ -44,18 +45,18 @@ export default function PrivacidadPage() {
             información nunca se envía a ningún servidor ni es accesible por el titular del
             sitio. Puedes borrarla en cualquier momento desde la configuración de tu navegador.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">3. Asistente conversacional</h2>
           <p>
             Los mensajes que envías al asistente educativo se procesan para generar una
             respuesta y aplicar límites de uso, pero no se vinculan a ningún dato que te
             identifique personalmente ni se conservan con esa finalidad.
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">4. Datos de analítica</h2>
           <p>
             {/* PLACEHOLDER: actualizar esta sección si se integra Google Analytics, AdSense u otra herramienta de medición o publicidad */}
@@ -72,9 +73,9 @@ export default function PrivacidadPage() {
             </a>
             .
           </p>
-        </section>
+        </Card>
 
-        <section className="flex flex-col gap-2">
+        <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">5. Tus derechos</h2>
           <p>
             Como este sitio no almacena datos personales en servidor, no es necesario ejercer
@@ -84,7 +85,7 @@ export default function PrivacidadPage() {
             [franciscomarare8@gmail.com].
           </p>
           {/* PLACEHOLDER: usa el mismo email de contacto que en el aviso legal */}
-        </section>
+        </Card>
       </div>
     </main>
   );

@@ -35,7 +35,7 @@ export const calculators: CalculatorInfo[] = [
   },
   {
     href: "/calculadoras/numero-fire",
-    name: "Número FIRE",
+    name: "Calculadora de jubilación (número FIRE)",
     description:
       "Calcula el capital que necesitas para la independencia financiera y cuántos años te faltan para alcanzarlo.",
   },

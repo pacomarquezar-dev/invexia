@@ -108,15 +108,15 @@ export default function FireNumberCalculator() {
       <div className="flex flex-col gap-6">
         {result.achievable ? (
           <ResultHighlight
-            label="Años estimados para alcanzar tu número FIRE"
+            label="Años estimados para alcanzar tu independencia financiera"
             value={`${yearsFormatter.format(result.yearsToTarget ?? 0)} años`}
-            stats={[{ label: "Tu número FIRE", value: formatEuros(result.fireNumber) }]}
+            stats={[{ label: "Capital necesario", value: formatEuros(result.fireNumber) }]}
           />
         ) : (
-          <ResultHighlight label="Tu número FIRE" value={formatEuros(result.fireNumber)}>
+          <ResultHighlight label="Capital necesario" value={formatEuros(result.fireNumber)}>
             <p className="mt-4 text-sm text-muted">
-              Con estos datos no llegarías a alcanzar tu número FIRE: necesitas ahorro inicial o
-              aportación mensual (y que crezcan con el tiempo).
+              Con estos datos no llegarías a alcanzar tu independencia financiera: necesitas
+              ahorro inicial o aportación mensual (y que crezcan con el tiempo).
             </p>
           </ResultHighlight>
         )}
@@ -131,7 +131,7 @@ export default function FireNumberCalculator() {
           >
             <YearlyCapitalChart
               evolution={result.evolution}
-              referenceLine={{ value: result.fireNumber, label: "Número FIRE" }}
+              referenceLine={{ value: result.fireNumber, label: "Capital objetivo" }}
             />
           </LazyOnVisible>
         ) : (
