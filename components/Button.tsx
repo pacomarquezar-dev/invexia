@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "ghost";
 
 interface BaseProps {
   variant?: Variant;
@@ -22,11 +22,12 @@ type ButtonAsButton = BaseProps &
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors";
+  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors";
 
 const variantClasses: Record<Variant, string> = {
   primary: "bg-accent text-background hover:bg-accent-hover",
   secondary: "border border-border text-foreground hover:bg-foreground/5",
+  ghost: "text-accent hover:bg-accent/10",
 };
 
 export default function Button({

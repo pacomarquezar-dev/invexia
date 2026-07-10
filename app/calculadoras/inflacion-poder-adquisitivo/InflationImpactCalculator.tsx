@@ -101,7 +101,11 @@ export default function InflationImpactCalculator() {
       </Card>
 
       <div className="flex flex-col gap-6">
-        <ResultHighlight label="Valor ajustado por inflación" value={formatEuros(result.adjustedValue)}>
+        <ResultHighlight
+          label="Valor ajustado por inflación"
+          value={formatEuros(result.adjustedValue)}
+          shareText={`Por la inflación, mi dinero perdería ${formatEuros(result.purchasingPowerLossAbsolute)} de poder adquisitivo en ${years} años, según Invexia.`}
+        >
           <p className="mt-4 text-sm text-muted">
             Pérdida de poder adquisitivo:{" "}
             <span className="font-medium text-foreground">

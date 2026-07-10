@@ -160,6 +160,7 @@ export default function FeeImpactCalculator() {
         <ResultHighlight
           label="Diferencia entre comisión baja y alta"
           value={formatEuros(result.lowVsHighDifference)}
+          shareText={`La diferencia entre pagar una comisión baja o alta a largo plazo es de ${formatEuros(result.lowVsHighDifference)}, según Invexia.`}
         >
           <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border pt-4">
             <div>

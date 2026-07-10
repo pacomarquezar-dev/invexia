@@ -111,6 +111,7 @@ export default function FireNumberCalculator() {
             label="Años estimados para alcanzar tu independencia financiera"
             value={`${yearsFormatter.format(result.yearsToTarget ?? 0)} años`}
             stats={[{ label: "Capital necesario", value: formatEuros(result.fireNumber) }]}
+            shareText={`Con esta aportación llegaría a mi número FIRE en ${yearsFormatter.format(result.yearsToTarget ?? 0)} años, calculado en Invexia.`}
           />
         ) : (
           <ResultHighlight label="Capital necesario" value={formatEuros(result.fireNumber)}>

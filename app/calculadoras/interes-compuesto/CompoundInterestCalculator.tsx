@@ -126,6 +126,7 @@ export default function CompoundInterestCalculator() {
             { label: "Total aportado", value: formatEuros(result.totalContributed) },
             { label: "Intereses generados", value: formatEuros(result.totalInterest) },
           ]}
+          shareText={`Con interés compuesto, mi capital final estimado es ${formatEuros(result.finalCapital)} en ${years} años, según Invexia.`}
         />
 
         <LazyOnVisible

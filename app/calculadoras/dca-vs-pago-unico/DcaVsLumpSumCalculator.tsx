@@ -91,6 +91,7 @@ export default function DcaVsLumpSumCalculator() {
         <ResultHighlight
           label={lumpSumWins ? "El pago único gana por" : "El DCA gana por"}
           value={`${formatEuros(Math.abs(result.differenceAbsolute))} (${percentFormatter.format(Math.abs(result.differencePercent))}%)`}
+          shareText={`${lumpSumWins ? "El pago único" : "El DCA"} gana por ${formatEuros(Math.abs(result.differenceAbsolute))} en mi simulación de Invexia.`}
         >
           <div className="mt-5 grid grid-cols-2 gap-4 border-t border-border pt-4">
             <div>

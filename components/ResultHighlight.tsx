@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Card from "@/components/Card";
+import ShareButton from "@/components/ShareButton";
 
 export interface ResultStat {
   label: string;
@@ -15,11 +16,19 @@ interface ResultHighlightProps {
   stats?: ResultStat[];
   /** Contenido libre adicional (frases condicionales, desgloses a medida, etc.). */
   children?: ReactNode;
+  /** Si se pasa, muestra un botón "Compartir resultado" con este texto (sin URL, se añade sola). */
+  shareText?: string;
 }
 
-export default function ResultHighlight({ label, value, stats, children }: ResultHighlightProps) {
+export default function ResultHighlight({
+  label,
+  value,
+  stats,
+  children,
+  shareText,
+}: ResultHighlightProps) {
   return (
-    <Card aria-live="polite" className="p-6 sm:p-8">
+    <Card aria-live="polite" className="animate-result-fade-in p-6 sm:p-8">
       <p className="text-sm font-medium text-muted">{label}</p>
       <p className="result-glow mt-1 text-5xl font-bold tracking-tight text-chart-green sm:text-6xl">
         {value}
@@ -37,6 +46,12 @@ export default function ResultHighlight({ label, value, stats, children }: Resul
       )}
 
       {children}
+
+      {shareText && (
+        <div className="mt-5">
+          <ShareButton text={shareText} className="-ml-5" />
+        </div>
+      )}
     </Card>
   );
 }

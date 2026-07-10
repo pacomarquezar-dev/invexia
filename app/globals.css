@@ -95,3 +95,71 @@ body {
 .result-glow {
   text-shadow: 0 0 28px rgba(61, 220, 132, 0.45);
 }
+
+/* Fundido de entrada del resultado destacado de una calculadora / test de
+   perfil. Solo opacidad (nunca tamaño/posición) y muy corto, para no
+   introducir CLS ni retrasar perceptiblemente el LCP. */
+@keyframes result-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-result-fade-in {
+  animation: result-fade-in 0.35s ease-out;
+}
+
+/* Transición suave entre páginas (aplicada en app/template.tsx, que se
+   remonta en cada navegación). Misma lógica: solo opacidad, corta, sin
+   afectar al LCP de la navegación inicial ya que el body ya está pintado. */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-page-fade-in {
+  animation: page-fade-in 0.2s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-result-fade-in,
+  .animate-page-fade-in {
+    animation: none;
+  }
+}
+
+/* Esqueleto de carga sutil (mensaje del asistente del chat mientras
+   responde). Gradiente que se desliza, no un simple "cargando…" de texto. */
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(245, 246, 245, 0.06) 25%,
+    rgba(245, 246, 245, 0.14) 50%,
+    rgba(245, 246, 245, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-skeleton {
+    animation: none;
+    background: rgba(245, 246, 245, 0.08);
+  }
+}

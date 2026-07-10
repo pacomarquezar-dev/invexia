@@ -114,6 +114,7 @@ export default function SavingsGoalCalculator() {
             { label: "Total aportado", value: formatEuros(result.totalContributed) },
             { label: "Capital final estimado", value: formatEuros(result.finalCapital) },
           ]}
+          shareText={`Para mi objetivo de ahorro necesito aportar ${formatEuros(result.requiredMonthlyContribution)} al mes, según Invexia.`}
         />
 
         <LazyOnVisible

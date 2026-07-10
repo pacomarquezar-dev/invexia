@@ -3,6 +3,7 @@
 import { Scale, Shield, TrendingUp, type LucideIcon } from "lucide-react";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
+import ShareButton from "@/components/ShareButton";
 import type { InvestorProfile, InvestorProfileDefinition } from "@/lib/investorProfile";
 import { maxInvestorProfileScore } from "@/lib/investorProfile";
 import { CHART_GREEN, CHART_GREEN_MID } from "@/lib/chartColors";
@@ -32,7 +33,7 @@ export default function ResultCard({ profile, totalScore, onRestart }: ResultCar
   const { Icon } = visual;
 
   return (
-    <Card aria-live="polite" className="flex flex-col gap-4 p-6 sm:p-8">
+    <Card aria-live="polite" className="animate-result-fade-in flex flex-col gap-4 p-6 sm:p-8">
       <p className="text-sm font-medium text-muted">Tu perfil de inversor</p>
 
       <div className="flex items-center gap-3">
@@ -54,11 +55,12 @@ export default function ResultCard({ profile, totalScore, onRestart }: ResultCar
         Puntuación: {totalScore} / {maxInvestorProfileScore}
       </p>
 
-      <div className="mt-2 flex flex-wrap gap-3">
+      <div className="mt-2 flex flex-wrap items-center gap-3">
         <Button type="button" variant="secondary" onClick={onRestart}>
           Repetir test
         </Button>
         <Button href="/calculadoras">Ver calculadoras</Button>
+        <ShareButton text={`Mi perfil de inversor en Invexia es ${profile.name}.`} />
       </div>
 
       <p className="text-xs text-muted">

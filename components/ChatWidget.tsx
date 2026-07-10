@@ -191,6 +191,14 @@ export default function ChatWidget() {
               messages={[WELCOME_MESSAGE, ...history]}
               lastMessageRef={lastMessageRef}
             />
+            {isSending && (
+              <div className="mt-3 flex justify-start" aria-hidden="true">
+                <div className="flex max-w-[85%] flex-col gap-2 rounded-2xl border border-accent-secondary/30 bg-accent-secondary/10 px-3 py-2.5">
+                  <div className="animate-skeleton h-3 w-40 rounded-full" />
+                  <div className="animate-skeleton h-3 w-24 rounded-full" />
+                </div>
+              </div>
+            )}
           </div>
 
           <div aria-live="polite" className="px-4 text-xs text-muted empty:hidden">
