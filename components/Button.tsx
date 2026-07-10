@@ -22,7 +22,7 @@ type ButtonAsButton = BaseProps &
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors";
+  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition duration-150 ease-out hover:scale-[1.04] disabled:hover:scale-100";
 
 const variantClasses: Record<Variant, string> = {
   primary: "bg-accent text-background hover:bg-accent-hover",

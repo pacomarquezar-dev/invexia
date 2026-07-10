@@ -223,7 +223,7 @@ export default function ChatWidget() {
               <button
                 type="submit"
                 disabled={isSending || !input.trim()}
-                className="rounded-xl bg-accent-secondary px-3 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:opacity-50"
+                className="rounded-xl bg-accent-secondary px-3 py-2 text-sm font-medium text-background transition duration-150 ease-out hover:scale-[1.04] hover:opacity-90 disabled:opacity-50 disabled:hover:scale-100"
               >
                 Enviar
               </button>
