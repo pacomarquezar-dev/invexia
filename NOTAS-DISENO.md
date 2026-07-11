@@ -6,6 +6,7 @@
 - El rate limiting del chatbot (20 mensajes/24h) es en memoria, por instancia del servidor — no un límite global exacto si Vercel escala a varias instancias. Suficiente para tráfico bajo actual. Si el tráfico crece, migrar a un límite distribuido real (ej. Vercel KV / Upstash Redis) para que el límite sea exacto entre instancias.
 - Botón del widget de chat: rediseñado con identidad propia — morado (`accent-secondary`) en vez del verde del resto de la web, burbuja de conversación como icono y un pulso sutil (`animate-chat-pulse`) para que se note que es interactivo. Idea pendiente y de menor prioridad: añadir una etiqueta de texto tipo "¿Dudas?" junto al botón.
 - Página 404 (`app/not-found.tsx`): ya usa el sistema de diseño (breadcrumb, tipografía y botón de CTA consistentes con el resto del sitio). Pendiente y de menor prioridad: darle una identidad visual propia (ilustración o icono) en vez de ser solo una variación tipográfica de una página de contenido normal.
+- RESUELTO: el chatbot fallaba en producción porque `ANTHROPIC_API_KEY` nunca se había configurado en las variables de entorno de Vercel (solo existía en `.env.local`, que nunca se despliega por diseño). Lección para futuras claves nuevas: recordar añadirlas también en Vercel → Environment Variables, no solo en `.env.local`.
 
 ## Ideas de difusión y monetización (pendientes)
 
