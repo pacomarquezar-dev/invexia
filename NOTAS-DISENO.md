@@ -12,5 +12,6 @@
 
 - Difusión: Product Hunt (ángulo "cómo lo construí con IA"), participar genuinamente en fintwit hispano (Twitter/X), vídeos cortos en TikTok/Reels mostrando una calculadora en uso, compartir en comunidades universitarias (Telegram/Discord).
 - Monetización: botón "Invítame a un café" (Ko-fi o Buy Me a Coffee) para apoyo voluntario. Afiliación de libros (Amazon Associates) junto a términos del glosario relevantes, como recurso "para profundizar". Descartado a propósito: afiliación de brokers/plataformas de inversión (riesgo regulatorio con la CNMV y desalineado con el tono educativo neutral del proyecto).
+- Amazon Associates: registro pausado por un error de validación de dirección en el formulario de Amazon que no se pudo resolver de forma remota. Retomar más adelante, probando otro navegador/incógnito o consultando el foro oficial de Amazon Afiliados.
 
 Todas estas requieren que el usuario cree cuentas externas antes de que se pueda implementar nada en código (Ko-fi, Amazon Associates) o son acciones fuera del código (redes sociales, foros) — no son tareas de desarrollo inmediatas.
