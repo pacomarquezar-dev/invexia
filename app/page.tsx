@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Coffee } from "lucide-react";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { calculators } from "@/lib/calculators";
@@ -44,6 +45,18 @@ export default function Home() {
             </Link>
           </Card>
         ))}
+      </div>
+
+      <div className="relative mt-10">
+        <Button
+          href="https://ko-fi.com/franciscomarquezarenas"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="ghost"
+        >
+          <Coffee aria-hidden="true" className="h-4 w-4" />
+          Invítame a un café
+        </Button>
       </div>
     </main>
   );

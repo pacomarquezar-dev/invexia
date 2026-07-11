@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Coffee } from "lucide-react";
+import Button from "@/components/Button";
 
 export default function SiteFooter() {
   return (
@@ -17,6 +19,19 @@ export default function SiteFooter() {
           Política de cookies
         </Link>
       </nav>
+
+      <div className="mt-5 flex justify-center">
+        <Button
+          href="https://ko-fi.com/franciscomarquezarenas"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="ghost"
+        >
+          <Coffee aria-hidden="true" className="h-4 w-4" />
+          Invítame a un café
+        </Button>
+      </div>
+
       <p className="mt-4 text-center text-xs text-muted/70">
         © {new Date().getFullYear()} Invexia. Contenido educativo, no asesoramiento financiero regulado.
       </p>
