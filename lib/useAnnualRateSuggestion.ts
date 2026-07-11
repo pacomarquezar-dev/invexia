@@ -20,9 +20,16 @@ function toNonNegativeNumber(value: string): number {
  * pre-rellenado con una sugerencia editable según el perfil de inversor
  * guardado en localStorage (ver resolveAnnualRateSuggestion en
  * investorProfile.ts para la lógica de decisión, que es la parte testeada).
+ *
+ * `initialOverride` permite forzar un valor de partida (p. ej. desde un
+ * parámetro de URL) con la misma prioridad que si la persona usuaria ya
+ * hubiera editado el campo, por delante de la sugerencia de perfil.
  */
-export function useAnnualRateSuggestion(defaultValue: number): AnnualRateFieldState {
-  const [override, setOverride] = useState<number | null>(null);
+export function useAnnualRateSuggestion(
+  defaultValue: number,
+  initialOverride: number | null = null,
+): AnnualRateFieldState {
+  const [override, setOverride] = useState<number | null>(initialOverride);
   const profile = useSuggestedInvestorProfile();
   const { value, hint } = resolveAnnualRateSuggestion(profile, override, defaultValue);
 

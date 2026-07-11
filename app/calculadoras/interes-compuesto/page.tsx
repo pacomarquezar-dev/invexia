@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import CompoundInterestCalculator from "./CompoundInterestCalculator";
@@ -33,7 +34,9 @@ export default function InteresCompuestoPage() {
         </p>
       </div>
 
-      <CompoundInterestCalculator />
+      <Suspense fallback={null}>
+        <CompoundInterestCalculator />
+      </Suspense>
 
       <RelatedGlossaryTerms slugs={["interes-compuesto", "interes-simple", "tae", "tin"]} />
 

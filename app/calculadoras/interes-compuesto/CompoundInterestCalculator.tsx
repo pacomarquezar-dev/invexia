@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useId, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import NumberField from "@/components/NumberField";
 import LazyOnVisible from "@/components/LazyOnVisible";
 import Card from "@/components/Card";
@@ -11,6 +12,7 @@ import { DONUT_HERO_COLOR, DONUT_MUTED_COLOR } from "@/lib/donutColors";
 import { calculateCompoundInterest } from "@/lib/compoundInterest";
 import { formatEuros } from "@/lib/formatCurrency";
 import { useAnnualRateSuggestion } from "@/lib/useAnnualRateSuggestion";
+import { COMPOUND_INTEREST_QUERY_PARAMS, parseNonNegativeUrlNumber } from "@/lib/compoundInterestUrl";
 
 const YearlyCapitalChart = dynamic(() => import("@/components/YearlyCapitalChart"), {
   ssr: false,
@@ -36,11 +38,27 @@ function toNonNegativeNumber(value: string): number {
 }
 
 export default function CompoundInterestCalculator() {
-  const [initialCapital, setInitialCapital] = useState(1000);
-  const [monthlyContribution, setMonthlyContribution] = useState(100);
+  const searchParams = useSearchParams();
+  const urlCapital = parseNonNegativeUrlNumber(
+    searchParams.get(COMPOUND_INTEREST_QUERY_PARAMS.initialCapital),
+  );
+  const urlContribution = parseNonNegativeUrlNumber(
+    searchParams.get(COMPOUND_INTEREST_QUERY_PARAMS.monthlyContribution),
+  );
+  const urlRate = parseNonNegativeUrlNumber(
+    searchParams.get(COMPOUND_INTEREST_QUERY_PARAMS.annualRatePercent),
+  );
+  const urlYears = parseNonNegativeUrlNumber(
+    searchParams.get(COMPOUND_INTEREST_QUERY_PARAMS.years),
+  );
+
+  const [initialCapital, setInitialCapital] = useState(urlCapital ?? 1000);
+  const [monthlyContribution, setMonthlyContribution] = useState(urlContribution ?? 100);
   const { value: annualRatePercent, setValue: setAnnualRatePercent, hint: rateHint } =
-    useAnnualRateSuggestion(7);
-  const [years, setYears] = useState(10);
+    useAnnualRateSuggestion(7, urlRate);
+  const [years, setYears] = useState(() =>
+    urlYears ? Math.min(60, Math.max(1, Math.round(urlYears))) : 10,
+  );
 
   const initialCapitalId = useId();
   const monthlyContributionId = useId();

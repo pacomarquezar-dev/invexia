@@ -38,4 +38,11 @@ describe("buildChatSystemPrompt", () => {
     expect(prompt).toMatch(/nunca recomiendes productos/i);
     expect(prompt).toMatch(/no cambia ninguna regla anterior/i);
   });
+
+  it("menciona la herramienta de cálculo de interés compuesto y deja claro que no debe usarse para recomendar", () => {
+    const prompt = buildChatSystemPrompt();
+
+    expect(prompt).toMatch(/calcular_interes_compuesto/);
+    expect(prompt).toMatch(/no la uses para decidir ni sugerir/i);
+  });
 });
