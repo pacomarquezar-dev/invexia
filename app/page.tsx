@@ -3,6 +3,7 @@ import { Coffee } from "lucide-react";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { calculators } from "@/lib/calculators";
+import { KOFI_URL } from "@/lib/kofi";
 
 export default function Home() {
   return (
@@ -49,7 +50,7 @@ export default function Home() {
 
       <div className="relative mt-10">
         <Button
-          href="https://ko-fi.com/franciscomarquezarenas"
+          href={KOFI_URL}
           target="_blank"
           rel="noopener noreferrer"
           variant="ghost"

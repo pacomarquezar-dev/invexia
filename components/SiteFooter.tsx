@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Coffee } from "lucide-react";
 import Button from "@/components/Button";
+import { KOFI_URL } from "@/lib/kofi";
 
 export default function SiteFooter() {
   return (
@@ -22,7 +23,7 @@ export default function SiteFooter() {
 
       <div className="mt-5 flex justify-center">
         <Button
-          href="https://ko-fi.com/franciscomarquezarenas"
+          href={KOFI_URL}
           target="_blank"
           rel="noopener noreferrer"
           variant="ghost"

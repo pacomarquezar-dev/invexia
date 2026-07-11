@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, Calculator, UserCheck } from "lucide-react";
+import { BookOpen, Calculator, Coffee, UserCheck } from "lucide-react";
+import { KOFI_URL } from "@/lib/kofi";
 
 const navLinkClasses =
   "flex items-center gap-1.5 text-sm font-medium text-muted transition-colors duration-200 hover:text-accent";
@@ -32,6 +33,10 @@ export default function SiteHeader() {
           <BookOpen aria-hidden="true" className="h-4 w-4" />
           Glosario
         </Link>
+        <a href={KOFI_URL} target="_blank" rel="noopener noreferrer" className={navLinkClasses}>
+          <Coffee aria-hidden="true" className="h-4 w-4" />
+          Invítame a un café
+        </a>
       </nav>
     </header>
   );
