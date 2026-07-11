@@ -1,18 +1,10 @@
+import Anthropic from "@anthropic-ai/sdk";
 import type { CallAnthropicParams } from "./chatHandler";
+import { chatTools, runChatTool } from "./chatTools";
 
-const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
-const ANTHROPIC_VERSION = "2023-06-01";
 const MODEL = "claude-haiku-4-5-20251001";
 const MAX_TOKENS = 700;
-
-interface AnthropicContentBlock {
-  type: string;
-  text?: string;
-}
-
-interface AnthropicMessagesResponse {
-  content?: AnthropicContentBlock[];
-}
+const MAX_TOOL_ITERATIONS = 3;
 
 export async function callAnthropicChatModel({ system, messages }: CallAnthropicParams): Promise<string> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -20,32 +12,50 @@ export async function callAnthropicChatModel({ system, messages }: CallAnthropic
     throw new Error("ANTHROPIC_API_KEY no está configurada.");
   }
 
-  const response = await fetch(ANTHROPIC_API_URL, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": apiKey,
-      "anthropic-version": ANTHROPIC_VERSION,
-    },
-    body: JSON.stringify({
+  const client = new Anthropic({ apiKey });
+
+  const conversation: Anthropic.MessageParam[] = messages.map((message) => ({
+    role: message.role,
+    content: message.content,
+  }));
+
+  for (let iteration = 0; iteration < MAX_TOOL_ITERATIONS; iteration += 1) {
+    const response = await client.messages.create({
       model: MODEL,
       max_tokens: MAX_TOKENS,
       system,
-      messages,
-    }),
-  });
+      messages: conversation,
+      tools: chatTools,
+    });
 
-  if (!response.ok) {
-    const errorBody = await response.text().catch(() => "");
-    throw new Error(`Anthropic API respondió con estado ${response.status}: ${errorBody}`);
+    if (response.stop_reason !== "tool_use") {
+      const text = response.content.find(
+        (block): block is Anthropic.TextBlock => block.type === "text",
+      )?.text;
+
+      if (!text) {
+        throw new Error("La respuesta del modelo no contiene texto.");
+      }
+
+      return text;
+    }
+
+    conversation.push({ role: "assistant", content: response.content });
+
+    const toolResults: Anthropic.ToolResultBlockParam[] = response.content
+      .filter((block): block is Anthropic.ToolUseBlock => block.type === "tool_use")
+      .map((block) => {
+        const { content, isError } = runChatTool(block.name, block.input);
+        return {
+          type: "tool_result",
+          tool_use_id: block.id,
+          content,
+          is_error: isError,
+        };
+      });
+
+    conversation.push({ role: "user", content: toolResults });
   }
 
-  const data = (await response.json()) as AnthropicMessagesResponse;
-  const text = data.content?.find((block) => block.type === "text")?.text;
-
-  if (!text) {
-    throw new Error("La respuesta del modelo no contiene texto.");
-  }
-
-  return text;
+  throw new Error("Se alcanzó el límite de iteraciones de herramientas sin obtener una respuesta final.");
 }

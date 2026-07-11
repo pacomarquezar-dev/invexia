@@ -6,10 +6,12 @@
 - El rate limiting del chatbot (20 mensajes/24h) es en memoria, por instancia del servidor — no un límite global exacto si Vercel escala a varias instancias. Suficiente para tráfico bajo actual. Si el tráfico crece, migrar a un límite distribuido real (ej. Vercel KV / Upstash Redis) para que el límite sea exacto entre instancias.
 - Botón del widget de chat: rediseñado con identidad propia — morado (`accent-secondary`) en vez del verde del resto de la web, burbuja de conversación como icono y un pulso sutil (`animate-chat-pulse`) para que se note que es interactivo. Idea pendiente y de menor prioridad: añadir una etiqueta de texto tipo "¿Dudas?" junto al botón.
 - Página 404 (`app/not-found.tsx`): ya usa el sistema de diseño (breadcrumb, tipografía y botón de CTA consistentes con el resto del sitio). Pendiente y de menor prioridad: darle una identidad visual propia (ilustración o icono) en vez de ser solo una variación tipográfica de una página de contenido normal.
+- RESUELTO: el chatbot fallaba en producción porque `ANTHROPIC_API_KEY` nunca se había configurado en las variables de entorno de Vercel (solo existía en `.env.local`, que nunca se despliega por diseño). Lección para futuras claves nuevas: recordar añadirlas también en Vercel → Environment Variables, no solo en `.env.local`.
 
 ## Ideas de difusión y monetización (pendientes)
 
 - Difusión: Product Hunt (ángulo "cómo lo construí con IA"), participar genuinamente en fintwit hispano (Twitter/X), vídeos cortos en TikTok/Reels mostrando una calculadora en uso, compartir en comunidades universitarias (Telegram/Discord).
 - Monetización: botón "Invítame a un café" (Ko-fi o Buy Me a Coffee) para apoyo voluntario. Afiliación de libros (Amazon Associates) junto a términos del glosario relevantes, como recurso "para profundizar". Descartado a propósito: afiliación de brokers/plataformas de inversión (riesgo regulatorio con la CNMV y desalineado con el tono educativo neutral del proyecto).
+- Amazon Associates: registro pausado por un error de validación de dirección en el formulario de Amazon que no se pudo resolver de forma remota. Retomar más adelante, probando otro navegador/incógnito o consultando el foro oficial de Amazon Afiliados.
 
 Todas estas requieren que el usuario cree cuentas externas antes de que se pueda implementar nada en código (Ko-fi, Amazon Associates) o son acciones fuera del código (redes sociales, foros) — no son tareas de desarrollo inmediatas.
