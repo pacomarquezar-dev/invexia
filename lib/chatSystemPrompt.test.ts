@@ -39,10 +39,21 @@ describe("buildChatSystemPrompt", () => {
     expect(prompt).toMatch(/no cambia ninguna regla anterior/i);
   });
 
-  it("menciona la herramienta de cálculo de interés compuesto y deja claro que no debe usarse para recomendar", () => {
+  it("menciona las seis herramientas de cálculo y deja claro que no deben usarse para recomendar", () => {
     const prompt = buildChatSystemPrompt();
 
-    expect(prompt).toMatch(/calcular_interes_compuesto/);
-    expect(prompt).toMatch(/no la uses para decidir ni sugerir/i);
+    expect(prompt).toMatch(/seis herramientas/i);
+    expect(prompt).toMatch(/DCA vs pago único/i);
+    expect(prompt).toMatch(/coste de comisiones/i);
+    expect(prompt).toMatch(/objetivo de ahorro/i);
+    expect(prompt).toMatch(/número FIRE/i);
+    expect(prompt).toMatch(/impacto de la inflación/i);
+    expect(prompt).toMatch(/nunca las uses para decidir ni sugerir/i);
+  });
+
+  it("instruye a no inventar una URL de calculadora cuando la herramienta no devuelve calculatorUrl", () => {
+    const prompt = buildChatSystemPrompt();
+
+    expect(prompt).toMatch(/no inventes ni escribas ninguna URL/i);
   });
 });

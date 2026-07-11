@@ -1,35 +1,10 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { CallAnthropicParams } from "./chatHandler";
-import {
-  chatTools,
-  COMPOUND_INTEREST_TOOL_NAME,
-  runCompoundInterestTool,
-  InvalidToolInputError,
-} from "./chatTools";
+import { chatTools, runChatTool } from "./chatTools";
 
 const MODEL = "claude-haiku-4-5-20251001";
 const MAX_TOKENS = 700;
 const MAX_TOOL_ITERATIONS = 3;
-
-interface ToolExecutionResult {
-  content: string;
-  isError: boolean;
-}
-
-function executeTool(name: string, input: unknown): ToolExecutionResult {
-  if (name !== COMPOUND_INTEREST_TOOL_NAME) {
-    return { content: `Herramienta desconocida: ${name}`, isError: true };
-  }
-
-  try {
-    return { content: JSON.stringify(runCompoundInterestTool(input)), isError: false };
-  } catch (error) {
-    if (error instanceof InvalidToolInputError) {
-      return { content: error.message, isError: true };
-    }
-    throw error;
-  }
-}
 
 export async function callAnthropicChatModel({ system, messages }: CallAnthropicParams): Promise<string> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -70,7 +45,7 @@ export async function callAnthropicChatModel({ system, messages }: CallAnthropic
     const toolResults: Anthropic.ToolResultBlockParam[] = response.content
       .filter((block): block is Anthropic.ToolUseBlock => block.type === "tool_use")
       .map((block) => {
-        const { content, isError } = executeTool(block.name, block.input);
+        const { content, isError } = runChatTool(block.name, block.input);
         return {
           type: "tool_result",
           tool_use_id: block.id,
