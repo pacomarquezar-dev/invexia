@@ -242,6 +242,7 @@ export function runSavingsGoalTool(rawInput: unknown): SavingsGoalToolOutput {
 export const FIRE_NUMBER_TOOL_NAME = "calcular_numero_fire";
 
 const DEFAULT_SAFE_WITHDRAWAL_RATE_PERCENT = 4;
+const DEFAULT_INFLATION_RATE_PERCENT = 2.5;
 
 interface FireNumberToolInput {
   annualExpenses: number;
@@ -249,6 +250,7 @@ interface FireNumberToolInput {
   currentSavings: number;
   monthlyContribution: number;
   annualRatePercent: number;
+  annualInflationRatePercent: number;
 }
 
 function parseFireNumberToolInput(rawInput: unknown): FireNumberToolInput {
@@ -265,6 +267,13 @@ function parseFireNumberToolInput(rawInput: unknown): FireNumberToolInput {
     currentSavings: requireAmount(record.currentSavings, "currentSavings"),
     monthlyContribution: requireAmount(record.monthlyContribution, "monthlyContribution"),
     annualRatePercent: requireAnnualRatePercent(record.annualRatePercent),
+    annualInflationRatePercent: optionalNumberInRange(
+      record.annualInflationRatePercent,
+      "annualInflationRatePercent",
+      0,
+      MAX_INFLATION_RATE_PERCENT,
+      DEFAULT_INFLATION_RATE_PERCENT,
+    ),
   };
 }
 
@@ -452,7 +461,10 @@ export const chatTools: Anthropic.Tool[] = [
       "actual y la aportación mensual dadas. Úsala cuando la persona usuaria pregunte algo como \"¿cuánto " +
       "necesito para poder dejar de trabajar?\" o mencione FIRE/jubilación anticipada con cifras concretas. " +
       `\"safeWithdrawalRatePercent\" es opcional (por defecto ${DEFAULT_SAFE_WITHDRAWAL_RATE_PERCENT}, la regla ` +
-      "clásica del 4%). Esta herramienta solo calcula el resultado matemático: no la uses para decidir si esa " +
+      "clásica del 4%). \"annualInflationRatePercent\" también es opcional " +
+      `(por defecto ${DEFAULT_INFLATION_RATE_PERCENT}): el resultado usa la rentabilidad real (ecuación de ` +
+      "Fisher, descontando esa inflación de la rentabilidad nominal) para que quede expresado en poder " +
+      "adquisitivo de hoy. Esta herramienta solo calcula el resultado matemático: no la uses para decidir si esa " +
       "meta o ese estilo de vida son adecuados para la persona usuaria.",
     input_schema: {
       type: "object",
@@ -469,7 +481,11 @@ export const chatTools: Anthropic.Tool[] = [
         monthlyContribution: { type: "number", description: "Aportación mensual actual, en euros (0 o más)." },
         annualRatePercent: {
           type: "number",
-          description: `Rentabilidad anual esperada en porcentaje (entre ${MIN_RATE_PERCENT} y ${MAX_RATE_PERCENT}).`,
+          description: `Rentabilidad anual nominal esperada en porcentaje, antes de inflación (entre ${MIN_RATE_PERCENT} y ${MAX_RATE_PERCENT}).`,
+        },
+        annualInflationRatePercent: {
+          type: "number",
+          description: `Inflación anual esperada, en porcentaje (entre 0 y ${MAX_INFLATION_RATE_PERCENT}). Opcional, por defecto ${DEFAULT_INFLATION_RATE_PERCENT}.`,
         },
       },
       required: ["annualExpenses", "currentSavings", "monthlyContribution", "annualRatePercent"],

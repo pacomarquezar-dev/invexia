@@ -217,13 +217,14 @@ describe("runFireNumberTool", () => {
     currentSavings: 10000,
     monthlyContribution: 500,
     annualRatePercent: 7,
+    annualInflationRatePercent: 2.5,
   };
 
-  it("da exactamente el mismo resultado que calculateFireNumber", () => {
+  it("da exactamente el mismo resultado que calculateFireNumber (usando la rentabilidad real de Fisher)", () => {
     expect(runFireNumberTool(input).result).toEqual(calculateFireNumber(input));
   });
 
-  it("usa la regla del 4% por defecto cuando no se da safeWithdrawalRatePercent", () => {
+  it("usa la regla del 4% y la inflación del 2.5% por defecto cuando no se dan", () => {
     const { annualExpenses, currentSavings, monthlyContribution, annualRatePercent } = input;
     const output = runFireNumberTool({
       annualExpenses,
@@ -233,7 +234,17 @@ describe("runFireNumberTool", () => {
     });
 
     expect(output.input.safeWithdrawalRatePercent).toBe(4);
+    expect(output.input.annualInflationRatePercent).toBe(2.5);
     expect(output.result).toEqual(calculateFireNumber(input));
+  });
+
+  it("rechaza una inflación fuera de rango (negativa o mayor de 20)", () => {
+    expect(() => runFireNumberTool({ ...input, annualInflationRatePercent: -1 })).toThrow(
+      InvalidToolInputError,
+    );
+    expect(() => runFireNumberTool({ ...input, annualInflationRatePercent: 21 })).toThrow(
+      InvalidToolInputError,
+    );
   });
 
   it("rechaza una tasa de retirada fuera de rango (0 o mayor de 10)", () => {

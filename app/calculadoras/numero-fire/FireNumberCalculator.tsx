@@ -23,6 +23,11 @@ const yearsFormatter = new Intl.NumberFormat("es-ES", {
   minimumFractionDigits: 1,
 });
 
+const percentFormatter = new Intl.NumberFormat("es-ES", {
+  maximumFractionDigits: 2,
+  minimumFractionDigits: 2,
+});
+
 function toNonNegativeNumber(value: string): number {
   const parsed = Number(value);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
@@ -34,12 +39,14 @@ export default function FireNumberCalculator() {
   const [currentSavings, setCurrentSavings] = useState(10000);
   const [monthlyContribution, setMonthlyContribution] = useState(500);
   const [annualRatePercent, setAnnualRatePercent] = useState(7);
+  const [annualInflationRatePercent, setAnnualInflationRatePercent] = useState(2.5);
 
   const annualExpensesId = useId();
   const withdrawalRateId = useId();
   const currentSavingsId = useId();
   const monthlyContributionId = useId();
   const annualRateId = useId();
+  const inflationRateId = useId();
 
   const result = useMemo(
     () =>
@@ -49,8 +56,16 @@ export default function FireNumberCalculator() {
         currentSavings,
         monthlyContribution,
         annualRatePercent,
+        annualInflationRatePercent,
       }),
-    [annualExpenses, safeWithdrawalRatePercent, currentSavings, monthlyContribution, annualRatePercent],
+    [
+      annualExpenses,
+      safeWithdrawalRatePercent,
+      currentSavings,
+      monthlyContribution,
+      annualRatePercent,
+      annualInflationRatePercent,
+    ],
   );
 
   return (
@@ -103,6 +118,16 @@ export default function FireNumberCalculator() {
           value={annualRatePercent}
           onChange={(raw) => setAnnualRatePercent(toNonNegativeNumber(raw))}
         />
+
+        <NumberField
+          id={inflationRateId}
+          name="annualInflationRatePercent"
+          label="Inflación esperada (%)"
+          max={20}
+          step={0.1}
+          value={annualInflationRatePercent}
+          onChange={(raw) => setAnnualInflationRatePercent(toNonNegativeNumber(raw))}
+        />
       </Card>
 
       <div className="flex flex-col gap-6">
@@ -112,12 +137,23 @@ export default function FireNumberCalculator() {
             value={`${yearsFormatter.format(result.yearsToTarget ?? 0)} años`}
             stats={[{ label: "Capital necesario", value: formatEuros(result.fireNumber) }]}
             shareText={`Con esta aportación llegaría a mi número FIRE en ${yearsFormatter.format(result.yearsToTarget ?? 0)} años, calculado en Invexia.`}
-          />
+          >
+            <p className="mt-4 text-sm text-muted">
+              Este cálculo ya tiene en cuenta la inflación (rentabilidad real usada:{" "}
+              {percentFormatter.format(result.realAnnualRatePercent)}%), por eso el resultado está
+              expresado en el poder adquisitivo de hoy.
+            </p>
+          </ResultHighlight>
         ) : (
           <ResultHighlight label="Capital necesario" value={formatEuros(result.fireNumber)}>
             <p className="mt-4 text-sm text-muted">
               Con estos datos no llegarías a alcanzar tu independencia financiera: necesitas
               ahorro inicial o aportación mensual (y que crezcan con el tiempo).
+            </p>
+            <p className="mt-2 text-sm text-muted">
+              Este cálculo ya tiene en cuenta la inflación (rentabilidad real usada:{" "}
+              {percentFormatter.format(result.realAnnualRatePercent)}%), por eso el resultado está
+              expresado en el poder adquisitivo de hoy.
             </p>
           </ResultHighlight>
         )}

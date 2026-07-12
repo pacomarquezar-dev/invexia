@@ -9,8 +9,10 @@ export interface FireNumberInput {
   currentSavings: number;
   /** Aportación mensual actual, en euros. */
   monthlyContribution: number;
-  /** Rentabilidad anual esperada, en porcentaje. */
+  /** Rentabilidad anual esperada (nominal, antes de inflación), en porcentaje. */
   annualRatePercent: number;
+  /** Inflación anual esperada, en porcentaje (ej. 2.5 para 2,5%). */
+  annualInflationRatePercent: number;
 }
 
 export interface FireNumberResult {
@@ -20,7 +22,24 @@ export interface FireNumberResult {
   achievable: boolean;
   /** Años estimados hasta alcanzarlo (null si no es alcanzable). */
   yearsToTarget: number | null;
+  /** Rentabilidad real (ecuación de Fisher) usada para proyectar el crecimiento. */
+  realAnnualRatePercent: number;
   evolution: YearlyCapital[];
+}
+
+/**
+ * Ecuación de Fisher: convierte una rentabilidad nominal en rentabilidad real
+ * descontando la inflación esperada, para que el resultado quede expresado en
+ * poder adquisitivo de hoy (y así no haga falta inflactar también el gasto
+ * anual objetivo).
+ */
+export function calculateRealRatePercent(
+  nominalRatePercent: number,
+  inflationRatePercent: number,
+): number {
+  const nominalRate = nominalRatePercent / 100;
+  const inflationRate = inflationRatePercent / 100;
+  return ((1 + nominalRate) / (1 + inflationRate) - 1) * 100;
 }
 
 /**
@@ -62,13 +81,19 @@ export function calculateFireNumber({
   currentSavings,
   monthlyContribution,
   annualRatePercent,
+  annualInflationRatePercent,
 }: FireNumberInput): FireNumberResult {
   const fireNumber =
     safeWithdrawalRatePercent > 0
       ? annualExpenses / (safeWithdrawalRatePercent / 100)
       : Infinity;
 
-  const monthlyRate = annualRatePercent / 100 / 12;
+  const realAnnualRatePercent = calculateRealRatePercent(
+    annualRatePercent,
+    annualInflationRatePercent,
+  );
+
+  const monthlyRate = realAnnualRatePercent / 100 / 12;
   const months = Number.isFinite(fireNumber)
     ? monthsToReachTarget(currentSavings, monthlyContribution, monthlyRate, fireNumber)
     : null;
@@ -78,6 +103,7 @@ export function calculateFireNumber({
       fireNumber,
       achievable: false,
       yearsToTarget: null,
+      realAnnualRatePercent,
       evolution: [],
     };
   }
@@ -88,7 +114,7 @@ export function calculateFireNumber({
   const { evolution } = calculateCompoundInterest({
     initialCapital: currentSavings,
     monthlyContribution,
-    annualRatePercent,
+    annualRatePercent: realAnnualRatePercent,
     years: horizonYears,
   });
 
@@ -96,6 +122,7 @@ export function calculateFireNumber({
     fireNumber,
     achievable: true,
     yearsToTarget: years,
+    realAnnualRatePercent,
     evolution,
   };
 }
