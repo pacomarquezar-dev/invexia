@@ -1,10 +1,11 @@
 "use client";
 
 import {
+  Area,
   CartesianGrid,
+  ComposedChart,
   Legend,
   Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -29,7 +30,13 @@ export default function FeeImpactChart({
 }: FeeImpactChartProps) {
   return (
     <ResponsiveContainer width="100%" height={320}>
-      <LineChart data={evolution} margin={{ top: 8, right: 16, left: 8, bottom: 8 }}>
+      <ComposedChart data={evolution} margin={{ top: 8, right: 16, left: 8, bottom: 8 }}>
+        <defs>
+          <linearGradient id="feeImpactLowFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={CHART_GREEN} stopOpacity={0.35} />
+            <stop offset="100%" stopColor={CHART_GREEN} stopOpacity={0} />
+          </linearGradient>
+        </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" />
         <XAxis
           dataKey="year"
@@ -57,12 +64,14 @@ export default function FeeImpactChart({
           itemStyle={{ color: "var(--foreground)" }}
         />
         <Legend wrapperStyle={{ fontSize: 12, color: "var(--foreground)" }} />
-        <Line
+        <Area
           type="monotone"
           dataKey="low"
           name={lowLabel}
           stroke={CHART_GREEN}
           strokeWidth={2}
+          fill="url(#feeImpactLowFill)"
+          fillOpacity={1}
           dot={false}
         />
         <Line
@@ -81,7 +90,7 @@ export default function FeeImpactChart({
           strokeWidth={2}
           dot={false}
         />
-      </LineChart>
+      </ComposedChart>
     </ResponsiveContainer>
   );
 }
