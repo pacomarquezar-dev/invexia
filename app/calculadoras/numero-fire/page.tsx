@@ -9,7 +9,7 @@ import FireNumberCalculator from "./FireNumberCalculator";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
 
 export const metadata: Metadata = {
-  title: "Calculadora de jubilación (número FIRE)",
+  title: "Calculadora de jubilación anticipada (número FIRE)",
   description:
     "Calcula tu número FIRE: el capital que necesitas para tu jubilación anticipada y cuántos años te faltan para alcanzarlo con tu ahorro y aportación mensual actuales.",
   alternates: {
@@ -43,6 +43,11 @@ const faqEntries = [
     question: "¿Qué significa FIRE?",
     answer:
       'FIRE son las siglas de "Financial Independence, Retire Early" (independencia financiera, jubilación anticipada). Es un movimiento centrado en ahorrar e invertir de forma agresiva para alcanzar la independencia financiera mucho antes de la edad de jubilación tradicional.',
+  },
+  {
+    question: "¿Es lo mismo FIRE que un plan de jubilación tradicional?",
+    answer:
+      "No exactamente. Un plan de jubilación tradicional (plan de pensiones, jubilación pública) suele estar ligado a una edad fija establecida por ley o por el propio producto financiero, y normalmente sigues trabajando hasta llegar a esa edad. FIRE es un enfoque distinto: en vez de fijar una edad, fija un número de capital, y una vez lo alcanzas puedes dejar de depender de un salario, sea a los 35, 45 o 60 años. No son excluyentes: muchas personas combinan ambos, siguen contribuyendo a su plan de pensiones tradicional mientras además construyen su número FIRE por su cuenta.",
   },
   {
     question: "¿Por qué se usa el 4% como tasa de retirada segura?",
@@ -136,11 +141,11 @@ export default function NumeroFirePage() {
           items={[
             { label: "Inicio", href: "/" },
             { label: "Calculadoras", href: "/calculadoras" },
-            { label: "Calculadora de jubilación (número FIRE)" },
+            { label: "Calculadora de jubilación anticipada (número FIRE)" },
           ]}
         />
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          Calculadora de jubilación (número FIRE)
+          Calculadora de jubilación anticipada (número FIRE)
         </h1>
         <p className="max-w-2xl text-lg leading-7 text-muted">
           Introduce el gasto anual que quieres cubrir con tus inversiones y la tasa de retirada
@@ -156,8 +161,11 @@ export default function NumeroFirePage() {
         <Card as="section" className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-foreground">Qué es el número FIRE</h2>
           <p>
+            Todo plan de jubilación necesita responder a una pregunta central: ¿cuánto capital
+            hace falta para poder dejar de depender de un salario? El movimiento FIRE responde
+            con un enfoque concreto y una cifra objetivo:{" "}
             <Link href="/glosario/fire" className="underline hover:text-foreground">
-              El número FIRE
+              el número FIRE
             </Link>{" "}
             es la cantidad de dinero que necesitas tener invertida para poder vivir de tus
             inversiones sin depender de un salario. Se calcula con una fórmula sencilla: tu gasto
