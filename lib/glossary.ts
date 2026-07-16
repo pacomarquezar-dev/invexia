@@ -240,4 +240,46 @@ export const glossaryTerms: GlossaryTerm[] = [
       label: "Calculadora de jubilación (número FIRE)",
     },
   },
+  {
+    slug: "irpf",
+    term: "IRPF (Impuesto sobre la Renta de las Personas Físicas)",
+    shortDefinition:
+      "El impuesto que grava la renta de las personas físicas en España, incluyendo los rendimientos del ahorro y las inversiones.",
+    definition:
+      "El IRPF (Impuesto sobre la Renta de las Personas Físicas) es el impuesto que grava, cada año, la renta obtenida por las personas físicas residentes en España: salarios, alquileres, rendimientos de actividades económicas, y también los rendimientos derivados del ahorro y la inversión. A efectos de este impuesto, la renta se divide en dos grandes bloques que tributan de forma distinta: la base general, que incluye principalmente el salario, los alquileres y otros rendimientos del trabajo o de actividades económicas, con una escala de tipos progresivos que varía según la comunidad autónoma de residencia; y la base del ahorro, que agrupa los intereses de cuentas y depósitos, los dividendos, y las ganancias o pérdidas patrimoniales derivadas de vender activos como fondos de inversión, acciones o ETF. Esta segunda base es la que afecta de forma directa a quien ahorra o invierte, y tributa con una escala progresiva propia, igual en toda España, independiente de la comunidad autónoma. El IRPF se declara anualmente a través de la Renta, presentada entre abril y junio del año siguiente al del ejercicio fiscal, y a lo largo del año ya se van practicando retenciones y pagos a cuenta (por ejemplo, en la nómina o en el pago de dividendos) que después se ajustan en esa declaración. Entender esta distinción entre base general y base del ahorro es el primer paso para comprender cómo tributa cualquier ganancia obtenida al invertir en España.",
+    example:
+      "Quien gana 30.000€ de salario tributa esa cantidad según la escala general del IRPF (con tramos que varían según la comunidad autónoma). Si esa misma persona obtiene además 1.000€ de ganancia al vender un fondo de inversión, esos 1.000€ no se suman al salario: tributan aparte, dentro de la base del ahorro, empezando en el 19% para los primeros 6.000€ de base del ahorro del año.",
+    relatedCalculator: {
+      href: "/guias/tributacion-ahorro-inversion-espana",
+      label: "Guía: cómo tributa el ahorro y la inversión en España",
+    },
+  },
+  {
+    slug: "base-imponible-del-ahorro",
+    term: "Base imponible del ahorro",
+    shortDefinition:
+      "La parte de la renta formada por intereses, dividendos y ganancias patrimoniales, que tributa con una escala propia en España.",
+    definition:
+      "La base imponible del ahorro es la parte de la renta de una persona formada por los rendimientos del capital mobiliario —principalmente intereses de cuentas y depósitos, y dividendos— y por las ganancias o pérdidas patrimoniales derivadas de la venta de activos como fondos de inversión, acciones o ETF. A diferencia de la base general (que engloba el salario y tributa según una escala que varía por comunidad autónoma), la base del ahorro tributa con una escala progresiva propia y única para todo el territorio español, con tipos que van del 19% al 30% según el importe total: 19% hasta 6.000€, 21% entre 6.000€ y 50.000€, 23% entre 50.000€ y 200.000€, 27% entre 200.000€ y 300.000€, y 30% a partir de 300.000€ (tipos vigentes desde 2025, sin cambios anunciados para 2026). Estos tramos se aplican de forma progresiva y acumulada sobre el conjunto de rendimientos del ahorro y ganancias patrimoniales del año, no de forma independiente por cada producto o venta. Dentro de la base del ahorro también se pueden compensar ganancias con pérdidas patrimoniales del mismo año o, con ciertos límites, de los cuatro años anteriores, lo que puede reducir la factura fiscal final. Conocer esta escala es clave para entender cuánto se queda realmente Hacienda de cualquier beneficio obtenido al vender una inversión.",
+    example:
+      "Si vendes un fondo de inversión con una ganancia de 10.000€, esa ganancia entra en la base imponible del ahorro: los primeros 6.000€ tributan al 19% (1.140€) y los 4.000€ restantes al 21% (840€), un total de 1.980€ de IRPF sobre esos 10.000€ de ganancia.",
+    relatedCalculator: {
+      href: "/guias/tributacion-ahorro-inversion-espana",
+      label: "Guía: cómo tributa el ahorro y la inversión en España",
+    },
+  },
+  {
+    slug: "traspaso-de-fondos",
+    term: "Traspaso de fondos",
+    shortDefinition:
+      "La posibilidad de mover dinero entre fondos de inversión sin tributar por la ganancia, a diferencia de vender acciones o ETF.",
+    definition:
+      "El traspaso de fondos es el mecanismo que permite mover el dinero invertido de un fondo de inversión a otro sin tributar en ese momento por la ganancia patrimonial acumulada, siempre que el traspaso se realice directamente entre fondos y no implique un reembolso a efectivo. Es una ventaja fiscal exclusiva de los fondos de inversión en España (no existe un mecanismo equivalente para acciones, ETF o la mayoría de los demás productos financieros), y permite a un inversor cambiar de estrategia, de gestora o de nivel de riesgo sin adelantar el pago de impuestos por las plusvalías generadas hasta ese momento. La tributación no desaparece, sino que se difiere: el impuesto se pagará finalmente cuando, en algún momento futuro, el dinero se reembolse de verdad en efectivo, calculándose sobre la ganancia acumulada desde la compra original, no desde el último traspaso. Esta característica hace que los fondos de inversión sean una herramienta especialmente flexible para ir ajustando una cartera con el tiempo (por ejemplo, reduciendo el riesgo a medida que se acerca el momento de usar el dinero) sin generar una carga fiscal en cada cambio. En cambio, si en lugar de un fondo se invierte en un ETF o en acciones, vender para comprar otro activo distinto sí genera tributación inmediata por la ganancia obtenida, aunque el dinero se reinvierta de inmediato.",
+    example:
+      "Si tienes 20.000€ en un fondo indexado con una plusvalía de 5.000€ y decides traspasarlos a otro fondo distinto, no tributas por esos 5.000€ en ese momento: el traspaso es fiscalmente neutro. Si en cambio vendieras un ETF con la misma plusvalía para comprar otro, tributarías de inmediato por esos 5.000€ dentro de la base imponible del ahorro.",
+    relatedCalculator: {
+      href: "/guias/tributacion-ahorro-inversion-espana",
+      label: "Guía: cómo tributa el ahorro y la inversión en España",
+    },
+  },
 ];
