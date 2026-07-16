@@ -28,6 +28,15 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Red de seguridad: si algún elemento futuro se desborda del viewport,
+   que no vuelva a producir scroll horizontal en toda la página. La causa
+   raíz de un desbordamiento concreto debe arreglarse en su origen; esto
+   solo evita que un fallo así se propague a nivel de documento. */
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
