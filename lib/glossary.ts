@@ -212,4 +212,32 @@ export const glossaryTerms: GlossaryTerm[] = [
     example:
       "Comprar una acción a 50€ que después sube a 65€ genera una ganancia (no garantizada de antemano) del 30% si se vende en ese momento; si en cambio la acción cae a 35€, la pérdida sería del 30%. En renta fija, en cambio, el cupón y la devolución del capital están pactados desde el principio.",
   },
+  {
+    slug: "fire",
+    term: "Número FIRE",
+    shortDefinition:
+      "El capital que necesitas acumular para vivir de tus inversiones, sin depender de un salario, dividiendo tu gasto anual entre tu tasa de retirada segura.",
+    definition:
+      "El número FIRE es la cantidad de capital que necesitas acumular para poder vivir de tus inversiones sin depender de un salario. Se calcula dividiendo tu gasto anual entre tu tasa de retirada segura (normalmente el 4%): por ejemplo, si gastas 24.000 € al año y usas una tasa del 4%, tu número FIRE es 600.000 €. FIRE son las siglas de \"Financial Independence, Retire Early\" (independencia financiera, jubilación anticipada), un movimiento popularizado sobre todo en Estados Unidos que defiende ahorrar e invertir de forma agresiva durante los años de vida laboral para poder dejar de depender de un sueldo mucho antes de la edad de jubilación oficial. El número FIRE no es una cifra universal: depende directamente del estilo de vida de cada persona, ya que un gasto anual más alto exige un capital objetivo proporcionalmente mayor, y de la tasa de retirada elegida, que a su vez refleja cuánto riesgo está dispuesta a asumir esa persona de quedarse sin capital antes de tiempo. La tasa de retirada segura habitual del 4% procede de la llamada regla del 4%, basada en estudios históricos sobre cuánto se puede retirar de una cartera diversificada cada año sin agotarla en varias décadas. Alcanzar el número FIRE no implica necesariamente dejar de trabajar por completo: dentro de este movimiento se distinguen variantes como el FIRE \"lean\" (con un gasto anual muy ajustado), el FIRE \"fat\" (con un nivel de gasto más alto) o el \"Coast FIRE\" (haber acumulado ya suficiente capital para que crezca solo hasta la jubilación tradicional, sin necesidad de seguir aportando).",
+    example:
+      "Alguien que estima un gasto anual de 30.000 € necesita un número FIRE de 750.000 € con una tasa de retirada del 4% (30.000 / 0,04). Si en cambio prefiere ser más conservador y usar una tasa del 3,5%, el número FIRE sube a unos 857.143 € (30.000 / 0,035): cuanto más baja la tasa de retirada elegida, mayor es el capital necesario, porque se asume menos riesgo de agotarlo.",
+    relatedCalculator: {
+      href: "/calculadoras/numero-fire",
+      label: "Calculadora de jubilación (número FIRE)",
+    },
+  },
+  {
+    slug: "regla-del-4-por-ciento",
+    term: "Regla del 4%",
+    shortDefinition:
+      "Una guía orientativa que estima que se puede retirar un 4% del capital invertido cada año, ajustado por inflación, sin agotarlo en 30 años.",
+    definition:
+      "La regla del 4% es una guía orientativa que estima que puedes retirar el 4% de tu capital invertido cada año, ajustado por inflación, con una probabilidad razonable de que ese capital dure al menos 30 años sin agotarse. Se basa en estudios históricos de mercados de EE. UU. (el \"Trinity Study\", publicado en 1998), que analizaron carteras compuestas por acciones y bonos a lo largo de distintos periodos históricos de 30 años, comprobando en qué porcentaje de esos periodos una retirada anual de esa magnitud no habría agotado el capital. Es el punto de partida habitual para calcular el número FIRE, ya que basta con dividir el gasto anual deseado entre esa tasa (o, de forma equivalente, multiplicar el gasto anual por 25) para obtener el capital objetivo. Conviene tener presente que la regla del 4% es una simplificación con limitaciones importantes: se calculó sobre el mercado estadounidense, no necesariamente extrapolable sin más a otros países o a periodos de inversión distintos de 30 años; asume una composición de cartera concreta entre acciones y bonos; y no tiene en cuenta gastos imprevistos grandes, cambios en el estilo de vida o la posibilidad de ajustar el gasto en años de mercado bajista. Por eso, muchas personas dentro de la comunidad FIRE ajustan la tasa a la baja (por ejemplo, al 3% o 3,5%) para ganar margen de seguridad, especialmente si su horizonte de jubilación es más largo de 30 años, o al alza si están dispuestas a asumir más riesgo o a reducir gastos en los años malos.",
+    example:
+      "Con un capital invertido de 500.000 €, la regla del 4% sugiere que se podrían retirar 20.000 € el primer año (500.000 × 0,04), y esa cantidad se iría ajustando cada año siguiente según la inflación, independientemente de cómo evolucione el valor de la cartera ese año.",
+    relatedCalculator: {
+      href: "/calculadoras/numero-fire",
+      label: "Calculadora de jubilación (número FIRE)",
+    },
+  },
 ];
