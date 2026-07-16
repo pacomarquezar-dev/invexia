@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { glossaryTerms } from "@/lib/glossary";
+import { guides } from "@/lib/guias";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
 
@@ -67,6 +68,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...glossaryTerms.map((entry) => ({
       url: `${siteUrl}/glosario/${entry.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    {
+      url: `${siteUrl}/guias`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...guides.map((guide) => ({
+      url: `${siteUrl}/guias/${guide.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
