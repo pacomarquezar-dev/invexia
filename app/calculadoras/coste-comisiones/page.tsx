@@ -4,6 +4,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import { calculateFeeImpact } from "@/lib/feeImpact";
+import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
 import FeeImpactCalculator from "./FeeImpactCalculator";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
@@ -16,13 +17,6 @@ export const metadata: Metadata = {
     canonical: "/calculadoras/coste-comisiones",
   },
 };
-
-const formatEUR = (value: number) =>
-  new Intl.NumberFormat("es-ES", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(value);
 
 const faqEntries = [
   {

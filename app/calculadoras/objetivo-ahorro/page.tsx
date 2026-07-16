@@ -4,7 +4,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import { calculateSavingsGoal } from "@/lib/savingsGoal";
-import { formatEuros } from "@/lib/formatCurrency";
+import { formatEuros, formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
 import SavingsGoalCalculator from "./SavingsGoalCalculator";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
@@ -17,13 +17,6 @@ export const metadata: Metadata = {
     canonical: "/calculadoras/objetivo-ahorro",
   },
 };
-
-const formatEUR = (value: number) =>
-  new Intl.NumberFormat("es-ES", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(value);
 
 const faqEntries = [
   {

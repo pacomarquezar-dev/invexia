@@ -4,6 +4,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import { calculateDcaVsLumpSum } from "@/lib/dcaVsLumpSum";
+import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
 import DcaVsLumpSumCalculator from "./DcaVsLumpSumCalculator";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
@@ -16,13 +17,6 @@ export const metadata: Metadata = {
     canonical: "/calculadoras/dca-vs-pago-unico",
   },
 };
-
-const formatEUR = (value: number) =>
-  new Intl.NumberFormat("es-ES", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(value);
 
 const percentFormatter = new Intl.NumberFormat("es-ES", {
   maximumFractionDigits: 1,
