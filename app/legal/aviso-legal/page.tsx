@@ -28,7 +28,7 @@ export default function AvisoLegalPage() {
             En cumplimiento del deber de información recogido en el artículo 10 de la Ley
             34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de
             Comercio Electrónico (LSSI-CE), se informa de que este sitio web,{" "}
-            <span className="font-medium text-foreground">invexia.es</span>, es titularidad de:
+            <span className="font-medium text-foreground">invexia.app</span>, es titularidad de:
           </p>
           {/* PLACEHOLDER: rellenar con los datos reales del titular antes de publicar */}
           <ul className="list-disc pl-5">

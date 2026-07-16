@@ -7,7 +7,7 @@ import { calculateFireNumber } from "@/lib/fireNumber";
 import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
 import FireNumberCalculator from "./FireNumberCalculator";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
 
 export const metadata: Metadata = {
   title: "Calculadora de jubilación anticipada (número FIRE)",

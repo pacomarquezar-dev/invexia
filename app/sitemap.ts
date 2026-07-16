@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { glossaryTerms } from "@/lib/glossary";
 import { guides } from "@/lib/guias";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

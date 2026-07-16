@@ -5,7 +5,7 @@ import Button from "@/components/Button";
 import Card from "@/components/Card";
 import { glossaryTerms } from "@/lib/glossary";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
 
 interface PageProps {
   params: Promise<{ termino: string }>;

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
-import { guides } from "@/lib/guias";
+import { guides, type GuideBlock } from "@/lib/guias";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
+const DEFAULT_DISCLAIMER =
+  "Este contenido es educativo y no constituye asesoramiento financiero personalizado.";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -17,6 +21,86 @@ export function generateStaticParams() {
 
 function findGuide(slug: string) {
   return guides.find((guide) => guide.slug === slug);
+}
+
+/** Convierte enlaces en formato `[texto](href)` dentro de un texto en <Link>. */
+function renderInlineLinks(text: string): ReactNode {
+  const pattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    parts.push(
+      <Link key={key++} href={match[2]} className="underline hover:text-foreground">
+        {match[1]}
+      </Link>
+    );
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+}
+
+function GuideBlockContent({ block }: { block: GuideBlock }) {
+  if (block.type === "paragraph") {
+    return <p className="leading-7">{renderInlineLinks(block.text)}</p>;
+  }
+
+  if (block.type === "list") {
+    return (
+      <ul className="flex list-disc flex-col gap-1 pl-5">
+        {block.items.map((item, index) => (
+          <li key={index}>{renderInlineLinks(item)}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse text-left text-sm">
+        <caption className="sr-only">{block.caption}</caption>
+        <thead>
+          <tr className="border-b border-border">
+            {block.headers.map((header) => (
+              <th key={header} scope="col" className="py-2 pr-4 font-semibold text-foreground">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {block.rows.map((row, rowIndex) => (
+            <tr
+              key={row[0]}
+              className={rowIndex < block.rows.length - 1 ? "border-b border-border/60" : undefined}
+            >
+              {row.map((cell, cellIndex) =>
+                cellIndex === 0 ? (
+                  <th key={cellIndex} scope="row" className="py-2 pr-4 font-medium text-foreground">
+                    {cell}
+                  </th>
+                ) : (
+                  <td key={cellIndex} className="py-2">
+                    {cell}
+                  </td>
+                )
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -75,16 +159,15 @@ export default async function GuiaPage({ params }: PageProps) {
           {guide.title}
         </h1>
         <p className="max-w-2xl text-lg leading-7 text-muted">{guide.description}</p>
+        <p className="text-sm text-foreground/50">Última actualización: {guide.lastUpdated}</p>
       </div>
 
       <div className="flex flex-col gap-6 text-foreground/80">
         {guide.sections.map((section) => (
-          <Card key={section.heading} as="section" className="flex flex-col gap-2">
+          <Card key={section.heading} as="section" className="flex flex-col gap-3">
             <h2 className="text-xl font-semibold text-foreground">{section.heading}</h2>
-            {section.body.map((paragraph, index) => (
-              <p key={index} className="leading-7">
-                {paragraph}
-              </p>
+            {section.blocks.map((block, index) => (
+              <GuideBlockContent key={index} block={block} />
             ))}
           </Card>
         ))}
@@ -104,7 +187,7 @@ export default async function GuiaPage({ params }: PageProps) {
                       +
                     </span>
                   </summary>
-                  <p className="mt-2 leading-7">{entry.answer}</p>
+                  <p className="mt-2 leading-7">{renderInlineLinks(entry.answer)}</p>
                 </details>
               ))}
             </div>
@@ -114,9 +197,7 @@ export default async function GuiaPage({ params }: PageProps) {
 
       <RelatedGlossaryTerms slugs={guide.relatedGlossarySlugs} />
 
-      <p className="text-xs text-foreground/50">
-        Este contenido es educativo y no constituye asesoramiento financiero personalizado.
-      </p>
+      <p className="text-xs text-foreground/50">{guide.disclaimer ?? DEFAULT_DISCLAIMER}</p>
     </main>
   );
 }

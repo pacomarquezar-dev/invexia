@@ -8,7 +8,7 @@ import { calculateCompoundInterest } from "@/lib/compoundInterest";
 import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
 import CompoundInterestCalculator from "./CompoundInterestCalculator";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
 
 export const metadata: Metadata = {
   title: "Calculadora de interés compuesto",

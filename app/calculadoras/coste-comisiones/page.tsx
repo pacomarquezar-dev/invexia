@@ -7,7 +7,7 @@ import { calculateFeeImpact } from "@/lib/feeImpact";
 import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
 import FeeImpactCalculator from "./FeeImpactCalculator";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
 
 export const metadata: Metadata = {
   title: "Coste real de las comisiones a largo plazo",

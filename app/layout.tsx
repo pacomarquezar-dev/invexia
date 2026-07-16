@@ -8,7 +8,7 @@ import SiteFooter from "@/components/SiteFooter";
 import ChatWidgetLoader from "@/components/ChatWidgetLoader";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.invexia.es";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
 
 /**
  * Desactivado a propósito mientras la cuenta de AdSense siga sin aprobar.
