@@ -343,4 +343,115 @@ export const guides: Guide[] = [
     disclaimer:
       "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado. Las referencias de ahorro por edad son orientativas y no están ajustadas a tu situación concreta (salario, gastos, dependientes, vivienda). Antes de tomar decisiones financieras importantes, valora tu caso particular o consulta con un profesional cualificado.",
   },
+  {
+    slug: "amortizar-hipoteca-o-invertir",
+    category: "articulo",
+    title: "¿Amortizar hipoteca o invertir? Cómo decidir con números reales",
+    description:
+      "Comparación con datos reales entre amortizar anticipadamente tu hipoteca e invertir ese dinero, según el tipo de interés de tu préstamo.",
+    publishedDate: "17 de julio de 2026",
+    lastUpdated: "julio de 2026",
+    sections: [
+      {
+        heading: "Introducción",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Es una de las decisiones financieras más comunes en España, y también una de las que más se decide «por sensación» en vez de con números: si tienes dinero de sobra, ¿lo destinas a amortizar anticipadamente tu hipoteca, o lo inviertes? La respuesta matemática es más sencilla de lo que parece — aunque la respuesta correcta para ti no sea solo matemática.",
+          },
+        ],
+      },
+      {
+        heading: "La comparación matemática básica",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "La lógica central es esta: amortizar anticipadamente tu hipoteca es equivalente a obtener una rentabilidad garantizada igual al [tipo de interés](/glosario/tin) de tu préstamo. Si tu hipoteca está al 3% TIN, cada euro que amortizas anticipadamente «rinde» un 3% garantizado, libre de riesgo, porque dejas de pagar esos intereses.",
+          },
+          {
+            type: "paragraph",
+            text: "Si esperas conseguir con una inversión una rentabilidad superior a ese 3% de forma sostenida, matemáticamente sale mejor invertir. Si no confías en superar esa rentabilidad, o prefieres la certeza absoluta frente al riesgo, amortizar es la opción más segura.",
+          },
+          {
+            type: "paragraph",
+            text: "Como referencia, en julio de 2026 el tipo medio de las hipotecas fijas en España ronda el 2,86% TIN según el INE, con ofertas competitivas por debajo del 2,5%. Un fondo indexado global ha rentado históricamente entre el 6% y el 8% anual a largo plazo — sin garantía de que se repita en el futuro, a diferencia del ahorro de intereses de amortizar, que sí es una certeza.",
+          },
+        ],
+      },
+      {
+        heading: "Ejemplo con euros reales",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Imagina que tienes 10.000 € disponibles y dudas entre amortizar tu hipoteca (al 3% TIN) o invertirlos. Si los inviertes con una rentabilidad esperada del 7% anual durante 15 años, sin aportaciones adicionales, el capital final —calculado con la misma fórmula que usa nuestra [calculadora de interés compuesto](/calculadoras/interes-compuesto)— es de 28.489,47 €: un beneficio de 18.489,47 € sobre los 10.000 € iniciales. Esto es un cálculo exacto de interés compuesto.",
+          },
+          {
+            type: "paragraph",
+            text: "El otro lado de la comparación no se puede calcular con la misma exactitud: el ahorro real que consigues amortizando anticipadamente depende del cuadro de amortización francés concreto de tu hipoteca (cómo se reparten capital e intereses en cada cuota, cuántos años te quedan, si reduces cuota o plazo), no solo del tipo de interés nominal. Como aproximación simplificada —y solo como aproximación, no como una simulación real de tu cuadro de amortización— podemos tratar el 3% TIN como si fuera una rentabilidad compuesta garantizada sobre esos mismos 10.000 € durante los mismos 15 años: eso da un ahorro de intereses estimado de unos 5.674,32 €.",
+          },
+          {
+            type: "paragraph",
+            text: "Con estos números, invertir sale matemáticamente por delante: unos 18.489 € de beneficio frente a unos 5.674 € de ahorro de intereses estimado, una diferencia de casi 12.815 €. Pero esa comparación asume que consigues sostener el 7% de rentabilidad durante los 15 años completos sin vender en un mal momento, mientras que el ahorro de amortizar es una certeza matemática desde el primer día.",
+          },
+        ],
+      },
+      {
+        heading: "Cuándo tiene más sentido amortizar, aunque la matemática diga invertir",
+        blocks: [
+          {
+            type: "list",
+            items: [
+              "Si tu hipoteca es a tipo variable y te preocupa que suban los tipos en el futuro.",
+              "Si te genera mucha tranquilidad psicológica no deber dinero, y esa tranquilidad tiene valor real para ti, aunque no sea medible en euros.",
+              "Si no tienes aún un fondo de emergencia: antes de invertir o amortizar de más, conviene tener cubiertos 3-6 meses de gastos en algo con buena [liquidez](/glosario/liquidez).",
+              "Si tu hipoteca tiene una comisión de amortización anticipada alta, que reduce el beneficio real de amortizar.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Cuándo tiene más sentido invertir",
+        blocks: [
+          {
+            type: "list",
+            items: [
+              "Si tu hipoteca tiene un tipo de interés bajo (por debajo del 3%, por ejemplo) y tienes un horizonte de inversión largo (10 años o más).",
+              "Si ya tienes cubierto tu fondo de emergencia.",
+              "Si tienes capacidad de asumir la volatilidad de los mercados sin vender en un mal momento por pánico.",
+            ],
+          },
+        ],
+      },
+    ],
+    faqEntries: [
+      {
+        question: "¿Es lo mismo amortizar capital que amortizar plazo?",
+        answer:
+          "No. Amortizar capital reduce la cuota mensual manteniendo el plazo, o reduce el plazo manteniendo la cuota — depende de lo que elijas al hacer la amortización. Amortizar reduciendo plazo suele ser matemáticamente más eficiente si tu objetivo es pagar menos intereses totales.",
+      },
+      {
+        question: "¿Hay beneficios fiscales por amortizar la hipoteca?",
+        answer:
+          "En general, no, salvo para hipotecas anteriores a 2013 que aún conserven derecho a deducción por vivienda habitual bajo el régimen transitorio. Para la gran mayoría de hipotecas actuales, no existe deducción fiscal por amortización anticipada.",
+      },
+      {
+        question: "¿Puedo hacer las dos cosas a la vez?",
+        answer:
+          "Sí, y de hecho es lo que hace mucha gente: destinar una parte del dinero disponible a amortizar y otra a invertir, en vez de una decisión de todo o nada.",
+      },
+      {
+        question: "¿Qué pasa si mi hipoteca es a tipo variable?",
+        answer:
+          "El razonamiento es el mismo, pero con más incertidumbre: no sabes con certeza qué tipo de interés vas a pagar en el futuro, así que amortizar una hipoteca variable tiene un componente adicional de protección frente a subidas de tipos que una hipoteca fija no tiene.",
+      },
+      {
+        question: "¿Cómo comparo esto con mi caso concreto?",
+        answer:
+          "Puedes usar nuestra [calculadora de interés compuesto](/calculadoras/interes-compuesto) para simular cuánto podría crecer tu dinero invertido durante el tiempo que te queda de hipoteca, con la rentabilidad que consideres razonable, y comparar ese resultado con lo que ahorrarías en intereses según el cuadro de amortización de tu banco.",
+      },
+    ],
+    relatedGlossarySlugs: ["interes-compuesto", "liquidez", "tin"],
+    disclaimer:
+      "Este artículo tiene fines educativos y no constituye asesoramiento financiero ni hipotecario personalizado. La comparación es una simplificación con fines ilustrativos: el ahorro real de amortizar depende del cuadro de amortización concreto de tu hipoteca y las rentabilidades de inversión no están garantizadas. Antes de tomar decisiones importantes, valora tu caso particular o consulta con un profesional cualificado.",
+  },
 ];
