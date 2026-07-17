@@ -226,4 +226,121 @@ export const guides: Guide[] = [
     disclaimer:
       "Esta guía tiene fines educativos y no constituye asesoramiento fiscal personalizado. La normativa fiscal puede cambiar y tu situación particular puede diferir de los ejemplos aquí mostrados. Antes de tomar decisiones basadas en implicaciones fiscales, consulta con un asesor fiscal cualificado o con la Agencia Tributaria.",
   },
+  {
+    slug: "cuanto-ahorrar-segun-tu-edad",
+    category: "articulo",
+    title: "¿Cuánto deberías tener ahorrado según tu edad? (España, 2026)",
+    description:
+      "Referencias orientativas de ahorro e inversión por edad, adaptadas a España, con ejemplos reales calculados con nuestra calculadora de objetivo de ahorro.",
+    publishedDate: "17 de julio de 2026",
+    lastUpdated: "julio de 2026",
+    sections: [
+      {
+        heading: "Introducción",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Es una de las preguntas que más ansiedad genera en finanzas personales: «¿voy bien para mi edad?». La respuesta honesta es que no existe una cifra oficial ni una respuesta única — depende de tu salario, tus gastos, si tienes hijos, si vives de alquiler o con hipoteca, y muchas otras variables. Pero sí existen referencias orientativas útiles, siempre que se usen como brújula, no como examen que aprobar o suspender.",
+          },
+        ],
+      },
+      {
+        heading: "La referencia más conocida: la regla de Fidelity",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Una de las guías más citadas internacionalmente es la de Fidelity Investments, que expresa el objetivo de ahorro como múltiplos de tu salario anual:",
+          },
+          {
+            type: "table",
+            caption: "Múltiplo del salario anual recomendado como ahorro acumulado, según la edad, propuesto por Fidelity Investments",
+            headers: ["Edad", "Múltiplo de tu salario anual"],
+            rows: [
+              ["30 años", "1 vez"],
+              ["35 años", "2 veces"],
+              ["40 años", "3 veces"],
+              ["45 años", "4 veces"],
+              ["50 años", "6 veces"],
+              ["55 años", "7 veces"],
+              ["60 años", "8 veces"],
+              ["67 años", "10 veces"],
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Es importante el matiz: esta referencia está pensada para el sistema de pensiones de EE. UU., donde el ahorro privado tiene que cubrir una parte mayor de la jubilación que en España, donde la pensión pública cubre una parte más grande del reemplazo de ingresos. Así que estas cifras son útiles como orientación de magnitud, pero probablemente son más ambiciosas de lo estrictamente necesario para alguien que va a cobrar una pensión pública española.",
+          },
+        ],
+      },
+      {
+        heading: "Cuánto ahorra realmente la gente en España",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "El salario neto medio en España ronda actualmente los 1.400-1.600 € mensuales, según la fuente y el año de referencia. Con ese nivel de ingresos, y con el peso que tienen la vivienda y el día a día en el presupuesto de la mayoría de los hogares, no es sorprendente que el ahorro real de gran parte de la población quede muy por debajo de referencias como la de Fidelity.",
+          },
+          {
+            type: "paragraph",
+            text: "Esto no es un fracaso individual: es, en gran medida, un reflejo del margen real que deja un salario medio una vez cubiertos los gastos esenciales. Tiene más sentido usar estas referencias como horizonte hacia el que avanzar de forma progresiva que como un listón que hay que alcanzar ya.",
+          },
+        ],
+      },
+      {
+        heading: "Ejemplo con la calculadora de objetivo de ahorro",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Vamos a verlo con números reales, usando nuestra [calculadora de objetivo de ahorro](/calculadoras/objetivo-ahorro). Imagina a alguien de 25 años con un salario neto de 1.500 €/mes (18.000 €/año) que quiere llegar a los 35 años con el equivalente a 2 veces su salario anual ahorrado e invertido: 36.000 €, en un plazo de 10 años, con una rentabilidad esperada del 7% anual y sin capital inicial de partida.",
+          },
+          {
+            type: "paragraph",
+            text: "Con estos datos, la aportación mensual necesaria para llegar al objetivo es de unos 208 €/mes. Sobre un salario neto de 1.500 €/mes, eso supone cerca del 14% del ingreso mensual — una cifra exigente pero realista si se automatiza desde el principio, sin depender de «lo que sobre» a final de mes.",
+          },
+          {
+            type: "paragraph",
+            text: "De esos 36.000 € finales, unos 24.959 € proceden de las aportaciones propias y el resto, unos 11.041 €, proviene de la rentabilidad generada por la inversión a lo largo de los 10 años: casi un tercio del objetivo lo pone el propio crecimiento del dinero invertido, no el bolsillo.",
+          },
+        ],
+      },
+      {
+        heading: "Qué hacer si vas «por detrás» de estas referencias",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "El tiempo importa más que el punto de partida. Si tienes 35 años y no tienes nada ahorrado, no significa que sea tarde — significa que el momento de empezar es ahora, no cuando «tengas más margen». Cada año que se retrasa el inicio no solo se pierde ese año de aportaciones: se pierde también el tiempo de [interés compuesto](/glosario/interes-compuesto) sobre esas aportaciones, que es el factor que más pesa a largo plazo.",
+          },
+        ],
+      },
+    ],
+    faqEntries: [
+      {
+        question: "¿Estas cifras incluyen la vivienda habitual?",
+        answer:
+          "No. Las referencias de este tipo normalmente se refieren a ahorro e inversión financiera (cuentas, fondos, planes de pensiones), no al valor de la vivienda en la que vives, ya que no es un activo líquido que puedas usar para tu jubilación sin venderla o hipotecarla.",
+      },
+      {
+        question: "¿Qué pasa si tengo deudas?",
+        answer:
+          "Antes de perseguir objetivos de ahorro a largo plazo, suele tener sentido priorizar eliminar deudas con intereses altos (como las de tarjetas de crédito), ya que el coste de esa deuda normalmente supera cualquier rentabilidad razonable que puedas obtener invirtiendo.",
+      },
+      {
+        question: "¿Estas referencias sirven igual para autónomos?",
+        answer:
+          "Los autónomos en España suelen tener una pensión pública futura más baja que los asalariados con la misma base de cotización, por lo que en muchos casos conviene apuntar a objetivos de ahorro más altos que las referencias generales, para compensar esa diferencia.",
+      },
+      {
+        question: "¿Es mejor centrarme en ahorrar o en invertir?",
+        answer:
+          "Depende del plazo: para un fondo de emergencia (3-6 meses de gastos) que necesitas tener disponible en cualquier momento, prioriza la liquidez. Para objetivos a más largo plazo (10 años o más), invertir suele tener sentido para que el dinero no pierda poder adquisitivo frente a la inflación.",
+      },
+      {
+        question: "¿Cómo sé cuánto necesito ahorrar cada mes para llegar a mi objetivo?",
+        answer:
+          "Puedes calcularlo exactamente con nuestra [calculadora de objetivo de ahorro](/calculadoras/objetivo-ahorro), indicando tu meta, el plazo y la rentabilidad esperada.",
+      },
+    ],
+    relatedGlossarySlugs: ["liquidez", "interes-compuesto"],
+    disclaimer:
+      "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado. Las referencias de ahorro por edad son orientativas y no están ajustadas a tu situación concreta (salario, gastos, dependientes, vivienda). Antes de tomar decisiones financieras importantes, valora tu caso particular o consulta con un profesional cualificado.",
+  },
 ];
