@@ -454,4 +454,118 @@ export const guides: Guide[] = [
     disclaimer:
       "Este artículo tiene fines educativos y no constituye asesoramiento financiero ni hipotecario personalizado. La comparación es una simplificación con fines ilustrativos: el ahorro real de amortizar depende del cuadro de amortización concreto de tu hipoteca y las rentabilidades de inversión no están garantizadas. Antes de tomar decisiones importantes, valora tu caso particular o consulta con un profesional cualificado.",
   },
+  {
+    slug: "fondo-de-emergencia-cuanto-y-donde",
+    category: "articulo",
+    title: "Fondo de emergencia: cuánto necesitas y dónde guardarlo",
+    description:
+      "Cuánto dinero deberías tener en tu fondo de emergencia, cómo calcularlo con tus gastos reales, y por qué no conviene invertirlo.",
+    publishedDate: "17 de julio de 2026",
+    lastUpdated: "julio de 2026",
+    sections: [
+      {
+        heading: "Introducción",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Antes de plantearte invertir, amortizar hipoteca, o perseguir cualquier objetivo financiero a largo plazo, hay un paso previo que casi todos los expertos en finanzas personales coinciden en priorizar: tener un fondo de emergencia. Es el dinero que te permite afrontar un imprevisto (perder el trabajo, una avería grande, un gasto médico) sin tener que endeudarte ni vender inversiones en mal momento.",
+          },
+        ],
+      },
+      {
+        heading: "Cuánto dinero necesitas",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "La referencia más habitual es tener entre 3 y 6 meses de gastos esenciales cubiertos. El rango depende de tu situación:",
+          },
+          {
+            type: "list",
+            items: [
+              "3 meses puede ser suficiente si tienes un empleo estable, ingresos predecibles y/o una segunda fuente de ingresos en el hogar.",
+              "6 meses (o incluso más) tiene más sentido si eres autónomo, tienes ingresos variables, o eres la única fuente de ingresos de tu hogar.",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Importante: la referencia es sobre gastos esenciales (vivienda, comida, suministros, seguros, transporte), no sobre tus ingresos totales. Si ganas 2.000 €/mes pero tus gastos esenciales son 1.200 €/mes, tu fondo de emergencia se calcula sobre esos 1.200 €, no sobre los 2.000 €.",
+          },
+        ],
+      },
+      {
+        heading: "Ejemplo con euros reales",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Imagina que tus gastos esenciales mensuales son 1.200 €, y quieres construir un fondo de emergencia de 6 meses (7.200 €) en un plazo de 18 meses, partiendo de 0 €, usando una cuenta remunerada al 2% —una rentabilidad conservadora y sostenible, ya que las promociones de bienvenida suelen ser más altas pero temporales. Con estos datos, calculados con nuestra [calculadora de objetivo de ahorro](/calculadoras/objetivo-ahorro), la aportación mensual necesaria es de unos 394,36 €/mes durante esos 18 meses.",
+          },
+          {
+            type: "paragraph",
+            text: "De esos 7.200 € finales, unos 7.098,54 € proceden de tus propias aportaciones y solo unos 101,46 € vienen de la rentabilidad de la cuenta remunerada: a diferencia de un objetivo de inversión a largo plazo, aquí el rendimiento apenas pesa — el fondo de emergencia se construye casi enteramente con lo que aportas, no con lo que rinde. Es una prueba más de que, para este objetivo, la prioridad no es maximizar rentabilidad, sino disponibilidad y seguridad.",
+          },
+        ],
+      },
+      {
+        heading: "Dónde guardarlo (y dónde no)",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "El fondo de emergencia necesita dos características por encima de todo: disponibilidad inmediata (buena [liquidez](/glosario/liquidez)) y seguridad del capital. La rentabilidad es secundaria — no es dinero que estás invirtiendo para hacerlo crecer, es dinero que estás guardando para que esté ahí cuando lo necesites.",
+          },
+          {
+            type: "paragraph",
+            text: "Opciones razonables:",
+          },
+          {
+            type: "list",
+            items: [
+              "Una cuenta remunerada sin permanencia, donde puedas retirar el dinero en cualquier momento sin penalización.",
+              "Una cuenta corriente normal, si prefieres simplicidad sobre unos pocos euros de más al año.",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Lo que normalmente no conviene:",
+          },
+          {
+            type: "list",
+            items: [
+              "Invertirlo en fondos o acciones: la volatilidad del mercado significa que justo cuando más necesites el dinero (una crisis económica, por ejemplo, que también puede coincidir con que pierdas el trabajo) podría estar en un mal momento de mercado.",
+              "Depósitos a plazo fijo con penalización por cancelación anticipada, que van en contra del propio propósito de tener el dinero disponible.",
+            ],
+          },
+        ],
+      },
+    ],
+    faqEntries: [
+      {
+        question: "¿El fondo de emergencia debería estar invertido para no perder valor frente a la inflación?",
+        answer:
+          "Es una tensión real: mantenerlo sin invertir significa que pierde poder adquisitivo con el tiempo, pero invertirlo introduce el riesgo de que esté en mal momento justo cuando lo necesites. El consenso habitual es priorizar la disponibilidad y aceptar esa pequeña pérdida de poder adquisitivo como el «coste» de tener seguridad.",
+      },
+      {
+        question: "¿Cuenta el saldo de mi nómina como parte del fondo de emergencia?",
+        answer:
+          "No se suele recomendar contarlo como tal, ya que ese dinero normalmente está destinado a gastos del mes en curso. El fondo de emergencia debería ser dinero aparte, con el propósito específico de cubrir imprevistos.",
+      },
+      {
+        question: "¿Debería tener el fondo de emergencia antes de empezar a invertir?",
+        answer:
+          "Es el orden que recomienda la mayoría de asesores financieros: primero el fondo de emergencia, después objetivos de inversión a largo plazo. Invertir sin fondo de emergencia te puede obligar a vender inversiones en mal momento si surge un imprevisto.",
+      },
+      {
+        question: "¿Puedo usar mi fondo de emergencia para una oportunidad de inversión?",
+        answer:
+          "No es lo recomendable. El fondo de emergencia tiene un propósito específico (cubrir imprevistos), y usarlo para otra cosa, aunque sea una buena oportunidad, te deja sin esa protección justo cuando la necesites.",
+      },
+      {
+        question: "¿Cómo calculo cuánto necesito ahorrar cada mes para construir mi fondo de emergencia?",
+        answer:
+          "Puedes calcularlo con nuestra [calculadora de objetivo de ahorro](/calculadoras/objetivo-ahorro), indicando la cantidad objetivo, el plazo que quieres darte, y la rentabilidad de tu cuenta remunerada (o 0% si prefieres no considerar ningún rendimiento).",
+      },
+    ],
+    relatedGlossarySlugs: ["liquidez"],
+    disclaimer:
+      "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado. Las referencias sobre el tamaño del fondo de emergencia son orientativas y no están ajustadas a tu situación concreta (estabilidad laboral, cargas familiares, otros ingresos). Antes de tomar decisiones financieras importantes, valora tu caso particular o consulta con un profesional cualificado.",
+  },
 ];
