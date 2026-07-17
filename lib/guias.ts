@@ -676,4 +676,104 @@ export const guides: Guide[] = [
     disclaimer:
       "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado ni recomendación de ningún fondo o producto concreto. Los datos de SPIVA citados son agregados históricos y no garantizan el comportamiento futuro de ningún fondo, activo o indexado. Antes de tomar decisiones de inversión, valora tu caso particular o consulta con un profesional cualificado.",
   },
+  {
+    slug: "coste-de-empezar-tarde-a-invertir",
+    category: "articulo",
+    title: "¿Qué pasa si empiezas a invertir 10 años tarde? El coste real de esperar",
+    description:
+      "Cuánto te cuesta en euros reales retrasar 10 años el inicio de tu inversión, con ejemplos calculados con nuestra calculadora de interés compuesto.",
+    publishedDate: "17 de julio de 2026",
+    lastUpdated: "julio de 2026",
+    sections: [
+      {
+        heading: "Introducción",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "«Ya invertiré cuando gane más» o «ya invertiré cuando tenga más ahorrado» son dos de las frases que más veces retrasan el momento de empezar a invertir. El problema es que ese retraso tiene un coste real, medible en euros, y ese coste no es lineal: cada año que se espera no solo se pierde ese año de aportaciones, se pierde también el tiempo que esas aportaciones habrían tenido para crecer con el interés compuesto.",
+          },
+        ],
+      },
+      {
+        heading: "Por qué el tiempo pesa más que la cantidad",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "El [interés compuesto](/glosario/interes-compuesto) necesita tiempo para desplegar todo su efecto. En los primeros años, el crecimiento de una inversión es lento y poco visible — la mayor parte del capital final de una inversión a muy largo plazo no se genera en los primeros años, sino en los últimos, cuando el capital acumulado ya es grande y cada punto porcentual de rentabilidad se aplica sobre una base mucho mayor. Por eso, empezar antes, aunque sea con poco dinero, suele pesar más que empezar más tarde con más dinero.",
+          },
+        ],
+      },
+      {
+        heading: "Comparación con euros reales",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Compara a dos personas que aportan exactamente 150 €/mes a una rentabilidad esperada del 7% anual, sin capital inicial, hasta los 65 años. La Persona A empieza a los 25 años (40 años de aportaciones); la Persona B empieza a los 35 años, diez años más tarde (30 años de aportaciones). Con estos datos, calculados con la misma fórmula que usa nuestra [calculadora de interés compuesto](/calculadoras/interes-compuesto), el resultado a los 65 años es el siguiente:",
+          },
+          {
+            type: "table",
+            caption: "Capital final a los 65 años aportando 150 €/mes al 7% anual, según la edad de inicio",
+            headers: ["", "Persona A (empieza a los 25)", "Persona B (empieza a los 35)"],
+            rows: [
+              ["Años aportando", "40", "30"],
+              ["Total aportado de su bolsillo", "72.000 €", "54.000 €"],
+              ["Capital final a los 65 años", "393.722,01 €", "182.995,65 €"],
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "La diferencia en el capital final es de 210.726,36 € a favor de la Persona A. Pero fíjate en la fila de aportaciones: la Persona A solo puso 18.000 € más de su bolsillo que la Persona B (10 años × 150 €/mes) — el resto de esa diferencia de más de 210.000 € no viene de aportar más dinero, viene únicamente de haber tenido 10 años más para que el interés compuesto actuara.",
+          },
+        ],
+      },
+      {
+        heading: "Un segundo escenario: ¿cuánto tendría que aportar la Persona B para igualar a la Persona A?",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Si la Persona B quisiera llegar a esos mismos 393.722,01 € a los 65 años, partiendo también de 0 € pero con solo 30 años por delante en vez de 40, necesitaría aportar unos 322,73 €/mes — más del doble de los 150 €/mes de la Persona A, solo para compensar esos 10 años de diferencia.",
+          },
+        ],
+      },
+      {
+        heading: "El coste de esperar «solo un poco más»",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Este ejercicio no es un argumento para invertir cualquier cantidad de forma precipitada, ni para sentir que «ya es tarde» si no empezaste a los 25 años — nunca es tarde para empezar, el mejor momento después de «hace 10 años» es «ahora». El objetivo es mostrar, con números reales, que la variable que más se puede optimizar en una inversión a largo plazo no es encontrar la inversión perfecta o el momento perfecto de mercado, sino simplemente reducir el tiempo que el dinero pasa fuera de la inversión.",
+          },
+        ],
+      },
+    ],
+    faqEntries: [
+      {
+        question: "¿Esto significa que no debería esperar nunca antes de invertir?",
+        answer:
+          "No es un consejo para invertir sin fondo de emergencia o con dinero que podrías necesitar a corto plazo. Es un argumento sobre priorizar el tiempo una vez que ya tienes cubiertas esas bases, no sobre saltarte pasos previos importantes.",
+      },
+      {
+        question: "¿Es mejor empezar con poco dinero ya, o esperar a tener más para empezar con una cantidad mayor?",
+        answer:
+          "Salvo que tengas una razón de peso para esperar (por ejemplo, terminar de construir tu fondo de emergencia), empezar antes con menos suele pesar más que esperar para empezar con más, precisamente por el efecto del tiempo sobre el interés compuesto.",
+      },
+      {
+        question: "¿Este cálculo tiene en cuenta la inflación?",
+        answer:
+          "No, el ejemplo usa una rentabilidad nominal constante del 7%, sin descontar inflación, para simplificar la comparación entre ambos escenarios. Si quieres ver el efecto de la inflación sobre tu poder adquisitivo futuro, puedes usar nuestra [calculadora de inflación y poder adquisitivo](/calculadoras/inflacion-poder-adquisitivo).",
+      },
+      {
+        question: "¿Puedo compensar el tiempo perdido aportando más dinero cada mes?",
+        answer:
+          "Sí, es posible compensarlo parcialmente aumentando la aportación mensual, aunque como muestra el ejemplo, suele hacer falta un incremento proporcionalmente mayor que los años perdidos para llegar al mismo resultado final.",
+      },
+      {
+        question: "¿Cómo calculo mi propio caso con mi edad y aportación real?",
+        answer:
+          "Puedes usar nuestra [calculadora de interés compuesto](/calculadoras/interes-compuesto), introduciendo tu capital inicial, tu aportación mensual y los años que te quedan hasta tu horizonte de inversión.",
+      },
+    ],
+    relatedGlossarySlugs: ["interes-compuesto"],
+    disclaimer:
+      "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado. Los ejemplos usan una rentabilidad nominal constante del 7% con fines ilustrativos; las rentabilidades reales de mercado varían de un año a otro y no están garantizadas. Antes de tomar decisiones de inversión, valora tu caso particular o consulta con un profesional cualificado.",
+  },
 ];
