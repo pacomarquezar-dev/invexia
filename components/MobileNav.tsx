@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
-import { BookOpen, Calculator, Coffee, Menu, Newspaper, UserCheck, X } from "lucide-react";
+import { BookOpen, Calculator, Coffee, Info, Menu, Newspaper, UserCheck, X } from "lucide-react";
 import { KOFI_URL } from "@/lib/kofi";
 import Card from "@/components/Card";
 
@@ -90,6 +90,10 @@ export default function MobileNav() {
           <Link href="/guias" className={menuLinkClasses} onClick={handleLinkClick}>
             <Newspaper aria-hidden="true" className="h-4 w-4" />
             Guías
+          </Link>
+          <Link href="/sobre" className={menuLinkClasses} onClick={handleLinkClick}>
+            <Info aria-hidden="true" className="h-4 w-4" />
+            Sobre
           </Link>
           <a
             href={KOFI_URL}

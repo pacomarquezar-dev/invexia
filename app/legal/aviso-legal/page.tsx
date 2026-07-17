@@ -30,7 +30,6 @@ export default function AvisoLegalPage() {
             Comercio Electrónico (LSSI-CE), se informa de que este sitio web,{" "}
             <span className="font-medium text-foreground">invexia.app</span>, es titularidad de:
           </p>
-          {/* PLACEHOLDER: rellenar con los datos reales del titular antes de publicar */}
           <ul className="list-disc pl-5">
             <li>Nombre: [FRANCISCO MÁRQUEZ ARENAS]</li>
             <li>Correo de contacto: [franciscomarare8@gmail.com]</li>

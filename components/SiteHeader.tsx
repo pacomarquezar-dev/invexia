@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, Calculator, Coffee, Newspaper, UserCheck } from "lucide-react";
+import { BookOpen, Calculator, Coffee, Info, Newspaper, UserCheck } from "lucide-react";
 import { KOFI_URL } from "@/lib/kofi";
 import MobileNav from "./MobileNav";
 
@@ -42,6 +42,10 @@ export default function SiteHeader() {
             <Link href="/guias" className={navLinkClasses}>
               <Newspaper aria-hidden="true" className="h-4 w-4" />
               Guías
+            </Link>
+            <Link href="/sobre" className={navLinkClasses}>
+              <Info aria-hidden="true" className="h-4 w-4" />
+              Sobre
             </Link>
             <a href={KOFI_URL} target="_blank" rel="noopener noreferrer" className={navLinkClasses}>
               <Coffee aria-hidden="true" className="h-4 w-4" />
