@@ -159,7 +159,10 @@ export default async function GuiaPage({ params }: PageProps) {
           {guide.title}
         </h1>
         <p className="max-w-2xl text-lg leading-7 text-muted">{guide.description}</p>
-        <p className="text-sm text-foreground/50">Última actualización: {guide.lastUpdated}</p>
+        <p className="text-sm text-foreground/50">
+          {guide.category === "articulo" && `Publicado: ${guide.publishedDate} · `}
+          Última actualización: {guide.lastUpdated}
+        </p>
       </div>
 
       <div className="flex flex-col gap-6 text-foreground/80">

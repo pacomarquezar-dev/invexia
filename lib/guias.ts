@@ -18,7 +18,7 @@ export interface GuideFaqEntry {
   answer: string;
 }
 
-export interface Guide {
+interface GuideBase {
   slug: string;
   title: string;
   /** Una frase, para la tarjeta del listado y la meta description. */
@@ -34,12 +34,21 @@ export interface Guide {
 }
 
 /**
+ * "guia": contenido de referencia evergreen, sin fecha de publicación obligatoria.
+ * "articulo": pieza de blog con fecha de publicación fija (`publishedDate` obligatorio).
+ */
+export type Guide =
+  | (GuideBase & { category: "guia"; publishedDate?: string })
+  | (GuideBase & { category: "articulo"; publishedDate: string });
+
+/**
  * Fuente única de verdad para las guías: /guias y /guias/[slug]
  * leen de aquí, igual que /glosario lee de lib/glossary.ts.
  */
 export const guides: Guide[] = [
   {
     slug: "tributacion-ahorro-inversion-espana",
+    category: "guia",
     title: "Cómo tributa el ahorro y la inversión en España (Guía 2026)",
     description:
       "Guía completa sobre el IRPF del ahorro: tramos, traspaso de fondos sin tributar, compensación de pérdidas y cómo afecta a tus inversiones en España.",
