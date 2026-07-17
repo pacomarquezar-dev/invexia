@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
+import EmbedCodeButton from "@/components/EmbedCodeButton";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import { calculateInflationImpact } from "@/lib/inflationImpact";
 import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
@@ -119,6 +120,12 @@ export default function InflacionPoderAdquisitivoPage() {
       </div>
 
       <InflationImpactCalculator />
+
+      <EmbedCodeButton
+        slug="inflacion-poder-adquisitivo"
+        title="Calculadora de inflación y poder adquisitivo"
+        height={900}
+      />
 
       <div className="flex flex-col gap-6 text-foreground/80">
         <Card as="section" className="flex flex-col gap-2">

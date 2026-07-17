@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
+import EmbedCodeButton from "@/components/EmbedCodeButton";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import { calculateSavingsGoal } from "@/lib/savingsGoal";
 import { formatEuros, formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
@@ -117,6 +118,12 @@ export default function ObjetivoAhorroPage() {
       </div>
 
       <SavingsGoalCalculator />
+
+      <EmbedCodeButton
+        slug="objetivo-ahorro"
+        title="Calculadora de objetivo de ahorro"
+        height={900}
+      />
 
       <div className="flex flex-col gap-6 text-foreground/80">
         <Card as="section" className="flex flex-col gap-2">

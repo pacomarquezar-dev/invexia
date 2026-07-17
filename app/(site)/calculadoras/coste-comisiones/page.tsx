@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
+import EmbedCodeButton from "@/components/EmbedCodeButton";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import { calculateFeeImpact } from "@/lib/feeImpact";
 import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
@@ -125,6 +126,12 @@ export default function CosteComisionesPage() {
       </div>
 
       <FeeImpactCalculator />
+
+      <EmbedCodeButton
+        slug="coste-comisiones"
+        title="Calculadora del coste real de las comisiones"
+        height={950}
+      />
 
       <div className="flex flex-col gap-6 text-foreground/80">
         <Card as="section" className="flex flex-col gap-2">

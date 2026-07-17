@@ -3,9 +3,6 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
-import ChatWidgetLoader from "@/components/ChatWidgetLoader";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
@@ -88,10 +85,7 @@ export default function RootLayout({
         )}
       </head>
       <body className="min-h-full flex flex-col">
-        <SiteHeader />
         {children}
-        <SiteFooter />
-        <ChatWidgetLoader />
         <Analytics />
         <SpeedInsights />
       </body>

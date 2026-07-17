@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
+import EmbedCodeButton from "@/components/EmbedCodeButton";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
 import { calculateFireNumber } from "@/lib/fireNumber";
 import { formatEurosCompact as formatEUR } from "@/lib/formatCurrency";
@@ -150,6 +151,12 @@ export default function NumeroFirePage() {
       </div>
 
       <FireNumberCalculator />
+
+      <EmbedCodeButton
+        slug="numero-fire"
+        title="Calculadora del número FIRE"
+        height={850}
+      />
 
       <div className="flex flex-col gap-6 text-foreground/80">
         <Card as="section" className="flex flex-col gap-2">
