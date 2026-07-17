@@ -568,4 +568,112 @@ export const guides: Guide[] = [
     disclaimer:
       "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado. Las referencias sobre el tamaño del fondo de emergencia son orientativas y no están ajustadas a tu situación concreta (estabilidad laboral, cargas familiares, otros ingresos). Antes de tomar decisiones financieras importantes, valora tu caso particular o consulta con un profesional cualificado.",
   },
+  {
+    slug: "fondos-indexados-vs-gestion-activa",
+    category: "articulo",
+    title: "Fondos indexados vs. gestión activa: la comisión importa más de lo que crees",
+    description:
+      "Por qué la mayoría de fondos de gestión activa no baten a su índice, y cuánto te cuesta realmente una comisión más alta a largo plazo.",
+    publishedDate: "17 de julio de 2026",
+    lastUpdated: "julio de 2026",
+    sections: [
+      {
+        heading: "Introducción",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Cuando eliges un fondo de inversión, es fácil fijarse solo en la rentabilidad pasada y pasar por alto la comisión que vas a pagar cada año. Pero la comisión no es un detalle menor: es de los pocos factores de la inversión que puedes controlar con certeza desde el primer día, mientras que la rentabilidad futura es siempre incierta.",
+          },
+        ],
+      },
+      {
+        heading: "Gestión activa vs. gestión pasiva (indexada)",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Un fondo de gestión activa tiene un equipo de gestores que decide qué comprar y vender, intentando batir a un índice de referencia. Un [fondo indexado](/glosario/fondo-indexado) (gestión pasiva) simplemente replica ese índice de forma automática, sin intentar seleccionar mejor que el mercado.",
+          },
+          {
+            type: "paragraph",
+            text: "La gestión activa suele cobrar una [comisión de gestión](/glosario/comision-de-gestion) más alta, porque incluye el coste de ese equipo de análisis y toma de decisiones. La gestión pasiva cobra mucho menos, porque el proceso es automático.",
+          },
+        ],
+      },
+      {
+        heading: "Lo que dicen los datos: ¿merece la pena pagar más por gestión activa?",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Según el informe SPIVA Europe Scorecard (S&P Dow Jones Indices), que compara sistemáticamente el rendimiento de fondos de gestión activa contra sus índices de referencia, más del 90% de los fondos de renta variable europeos de gestión activa no consiguen batir a su índice en un horizonte de 10 años. El patrón se repite, con variaciones según el año y la categoría, en prácticamente todos los mercados analizados, incluido el español.",
+          },
+          {
+            type: "paragraph",
+            text: "Esto no significa que sea imposible encontrar un fondo activo que bata al mercado —algunos lo consiguen, especialmente en periodos cortos— pero sí significa que es la excepción, no la norma, y que identificar de antemano cuál va a ser esa excepción es extremadamente difícil incluso para inversores experimentados.",
+          },
+        ],
+      },
+      {
+        heading: "Cuánto cuesta realmente una comisión más alta",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Imagina que inviertes 10.000 € durante 25 años, con una rentabilidad bruta esperada del 7% anual antes de comisiones, y comparas tres escenarios de comisión: 0,2% (típico de un fondo indexado), 1% (una comisión de gestión activa moderada) y 2% (una comisión de gestión activa alta). Con estos datos, calculados con nuestra [calculadora de coste de comisiones](/calculadoras/coste-comisiones), el capital final en cada escenario es el siguiente:",
+          },
+          {
+            type: "table",
+            caption: "Capital final a los 25 años de invertir 10.000 € al 7% bruto anual, según la comisión aplicada",
+            headers: ["Escenario", "Comisión anual", "Capital final a 25 años"],
+            rows: [
+              ["Comisión baja (indexado)", "0,2%", "54.477,43 €"],
+              ["Comisión media", "1%", "44.649,70 €"],
+              ["Comisión alta (activa)", "2%", "34.812,90 €"],
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "La diferencia entre el escenario de comisión baja y el de comisión alta es de 19.664,53 € — solo por el efecto acumulado de una comisión 1,8 puntos porcentuales más alta cada año, aplicada sobre el mismo capital inicial y la misma rentabilidad bruta. Esta es la razón por la que la comisión importa incluso si un fondo activo consiguiera igualar —no superar— la rentabilidad bruta del índice: partiendo del mismo punto, una comisión más alta te deja sistemáticamente con menos dinero al final.",
+          },
+        ],
+      },
+      {
+        heading: "La ventaja fiscal adicional de los fondos en España",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Además de las comisiones más bajas, los fondos indexados en España tienen una ventaja fiscal que los [ETF](/glosario/etf) no ofrecen: el [traspaso entre fondos sin tributar](/glosario/traspaso-de-fondos), que te permite cambiar de fondo o reequilibrar tu cartera sin generar una factura fiscal inmediata. Puedes leer el detalle completo en nuestra [guía de tributación del ahorro e inversión en España](/guias/tributacion-ahorro-inversion-espana).",
+          },
+        ],
+      },
+    ],
+    faqEntries: [
+      {
+        question: "¿Los fondos indexados garantizan mejor rentabilidad que los activos?",
+        answer:
+          "No garantizan nada — simplemente replican el índice, así que su rentabilidad será la del mercado menos su (baja) comisión. Lo que muestran los datos es que, en conjunto y a largo plazo, esa opción suele superar a la mayoría de los fondos activos, no que sea matemáticamente imposible que un fondo activo lo haga mejor en un caso concreto.",
+      },
+      {
+        question: "¿Por qué existen entonces los fondos de gestión activa si la mayoría no bate al índice?",
+        answer:
+          "Hay demanda de inversores que creen (con razón en algunos casos concretos, pero no en la mayoría) que pueden identificar de antemano qué gestor va a superar al mercado, y las gestoras obtienen mayores ingresos por comisión con productos de gestión activa que con productos indexados.",
+      },
+      {
+        question: "¿Toda la gestión activa es mala inversión?",
+        answer:
+          "No es una afirmación tan categórica. Existen fondos activos que baten consistentemente a su índice durante largos periodos, y algunos inversores valoran otros aspectos de la gestión activa, como estrategias específicas no replicables por un índice. Pero estadísticamente, la probabilidad de acertar con uno de esos fondos de antemano es baja.",
+      },
+      {
+        question: "¿Una comisión del 1% es alta o baja?",
+        answer:
+          "Depende de la categoría: para un fondo indexado global, un 1% se considera relativamente alto (lo habitual ronda el 0,1%-0,3%). Para un fondo de gestión activa, un 1% está dentro de lo común, aunque existen opciones más baratas y más caras.",
+      },
+      {
+        question: "¿Cómo comparo el impacto de la comisión en mi caso concreto?",
+        answer:
+          "Puedes usar nuestra [calculadora de coste de comisiones](/calculadoras/coste-comisiones), indicando tu capital, horizonte temporal, y los distintos escenarios de comisión que quieras comparar.",
+      },
+    ],
+    relatedGlossarySlugs: ["fondo-indexado", "comision-de-gestion", "etf", "traspaso-de-fondos"],
+    disclaimer:
+      "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado ni recomendación de ningún fondo o producto concreto. Los datos de SPIVA citados son agregados históricos y no garantizan el comportamiento futuro de ningún fondo, activo o indexado. Antes de tomar decisiones de inversión, valora tu caso particular o consulta con un profesional cualificado.",
+  },
 ];
