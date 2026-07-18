@@ -33,13 +33,25 @@ interface GuideBase {
   disclaimer?: string;
 }
 
+export interface StudyHeadlineStat {
+  /** Etiqueta corta encima del número (ej. "Coste de una comisión alta en 40 años"). */
+  label: string;
+  /** El dato principal, ya formateado (euros, porcentaje, años...). */
+  value: string;
+  /** Contexto breve debajo del número (ej. metodología o supuestos en una frase). */
+  caption?: string;
+}
+
 /**
  * "guia": contenido de referencia evergreen, sin fecha de publicación obligatoria.
  * "articulo": pieza de blog con fecha de publicación fija (`publishedDate` obligatorio).
+ * "estudio": mini-estudio con datos propios, con un dato destacado (`headlineStat`)
+ * mostrado antes que cualquier otro contenido.
  */
 export type Guide =
   | (GuideBase & { category: "guia"; publishedDate?: string })
-  | (GuideBase & { category: "articulo"; publishedDate: string });
+  | (GuideBase & { category: "articulo"; publishedDate: string })
+  | (GuideBase & { category: "estudio"; publishedDate: string; headlineStat: StudyHeadlineStat });
 
 /**
  * Fuente única de verdad para las guías: /guias y /guias/[slug]

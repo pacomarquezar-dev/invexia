@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 const CATEGORY_LABELS: Record<Guide["category"], string> = {
   guia: "Guías",
   articulo: "Artículos",
+  estudio: "Estudios",
 };
 
 function GuideCardList({
@@ -59,7 +60,7 @@ export default function GuiasPage() {
 
         {showCategorySections ? (
           <div className="flex flex-col gap-10">
-            {(["guia", "articulo"] as const).map((category) => {
+            {(["guia", "articulo", "estudio"] as const).map((category) => {
               const items = guides.filter((guide) => guide.category === category);
               if (items.length === 0) return null;
 

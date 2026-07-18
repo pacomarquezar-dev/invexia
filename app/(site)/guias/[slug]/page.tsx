@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
 import Card from "@/components/Card";
 import RelatedGlossaryTerms from "@/components/RelatedGlossaryTerms";
+import StudyHeadlineStat from "@/components/StudyHeadlineStat";
 import { guides, type GuideBlock } from "@/lib/guias";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://invexia.app";
@@ -160,10 +161,13 @@ export default async function GuiaPage({ params }: PageProps) {
         </h1>
         <p className="max-w-2xl text-lg leading-7 text-muted">{guide.description}</p>
         <p className="text-sm text-foreground/50">
-          {guide.category === "articulo" && `Publicado: ${guide.publishedDate} · `}
+          {(guide.category === "articulo" || guide.category === "estudio") &&
+            `Publicado: ${guide.publishedDate} · `}
           Última actualización: {guide.lastUpdated}
         </p>
       </div>
+
+      {guide.category === "estudio" && <StudyHeadlineStat {...guide.headlineStat} />}
 
       <div className="flex flex-col gap-6 text-foreground/80">
         {guide.sections.map((section) => (
