@@ -788,4 +788,122 @@ export const guides: Guide[] = [
     disclaimer:
       "Este artículo tiene fines educativos y no constituye asesoramiento financiero personalizado. Los ejemplos usan una rentabilidad nominal constante del 7% con fines ilustrativos; las rentabilidades reales de mercado varían de un año a otro y no están garantizadas. Antes de tomar decisiones de inversión, valora tu caso particular o consulta con un profesional cualificado.",
   },
+  {
+    slug: "coste-real-comisiones-fondos-espana",
+    category: "estudio",
+    title: "El coste real de las comisiones de los fondos en España: estudio propio",
+    description:
+      "Simulación propia: pagar una comisión del 2% en vez del 0,2% le cuesta a un inversor español casi 100.000€ en 40 años — más de lo que ha aportado en toda su vida.",
+    publishedDate: "18 de julio de 2026",
+    lastUpdated: "julio de 2026",
+    headlineStat: {
+      label: "Coste de pagar una comisión alta (2%) en vez de una baja (0,2%) durante 40 años",
+      value: "98.086 €",
+      caption:
+        "Simulación propia de Invexia: aportación de 200€/mes, sin capital inicial, rentabilidad bruta del 7% anual, desde los 25 hasta los 65 años",
+    },
+    sections: [
+      {
+        heading: "El dato en una frase",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Un inversor que aporta 200 € al mes durante 40 años (desde los 25 hasta los 65 años), con una rentabilidad bruta del 7% anual, pierde 98.086 € solo por pagar una comisión anual del 2% en vez de una del 0,2%. Esa cifra es mayor que el total de dinero que esa persona ha aportado de su bolsillo a lo largo de toda su vida (96.000 €): la comisión, acumulada durante cuatro décadas, le cuesta más que todos sus propios ahorros juntos.",
+          },
+        ],
+      },
+      {
+        heading: "Por qué esto importa",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Una diferencia de 1,8 puntos porcentuales en la comisión anual (2% frente a 0,2%) suena a poco cuando se ve como un número aislado en la ficha de un fondo. Pero esa comisión no se paga una sola vez: se descuenta cada año, sobre un capital cada vez mayor, durante todo el tiempo que el dinero está invertido. Es el mismo mecanismo del interés compuesto que hace crecer una inversión, funcionando esta vez en sentido contrario.",
+          },
+        ],
+      },
+      {
+        heading: "Los números completos, por horizonte temporal",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Estos son los resultados completos para los cuatro horizontes analizados, calculados con la misma [calculadora de interés compuesto](/calculadoras/interes-compuesto) que puedes usar para tu propio caso:",
+          },
+          {
+            type: "table",
+            caption:
+              "Capital final aportando 200 €/mes al 7% bruto anual, comparando una comisión del 0,2% frente a una del 2%, según el horizonte temporal",
+            headers: ["Horizonte", "Capital final (comisión 0,2%)", "Capital final (comisión 2%)", "Diferencia"],
+            rows: [
+              ["10 años", "34.238,56 €", "32.775,87 €", "1.462,70 €"],
+              ["20 años", "101.691,71 €", "92.408,18 €", "9.283,53 €"],
+              ["30 años", "234.580,66 €", "200.903,01 €", "33.677,65 €"],
+              ["40 años", "496.384,20 €", "398.298,15 €", "98.086,05 €"],
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Metodología",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Este estudio usa una simulación propia, calculada con el mismo motor de cálculo que usa la [calculadora de interés compuesto](/calculadoras/interes-compuesto) de Invexia, aplicando la fórmula estándar de interés compuesto con aportaciones mensuales.",
+          },
+          {
+            type: "paragraph",
+            text: "Supuestos del escenario base:",
+          },
+          {
+            type: "list",
+            items: [
+              "Aportación mensual: 200€ (cifra ilustrativa y redonda, no un promedio oficial de ningún organismo — se eligió por ser una cantidad realista y fácil de escalar mentalmente para cualquier lector)",
+              "Capital inicial: 0€",
+              "Rentabilidad bruta anual: 7% (rentabilidad histórica aproximada de un fondo indexado global a largo plazo, antes de comisiones)",
+              "Comisión «baja»: 0,2% (típica de un fondo indexado de bajo coste)",
+              "Comisión «alta»: 2% (frecuente en fondos con comisiones elevadas)",
+              "Ambos escenarios parten de los mismos supuestos de aportación, capital y rentabilidad bruta; la única variable que cambia es la comisión anual",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Limitaciones: esta es una simulación con una rentabilidad constante, no una predicción de mercado real (los mercados no rinden un porcentaje fijo cada año). El objetivo del estudio es ilustrar el efecto compuesto del coste de una comisión, no predecir el resultado real de ninguna inversión concreta.",
+          },
+          {
+            type: "paragraph",
+            text: "El código completo de esta simulación es público y verificable en el [repositorio de GitHub](https://github.com/pacomarquezar-dev/invexia) de Invexia.",
+          },
+        ],
+      },
+    ],
+    faqEntries: [
+      {
+        question: "¿Este dato es un promedio real de lo que pagan los españoles?",
+        answer:
+          "No. Es una simulación con supuestos razonables e ilustrativos (200€/mes, 40 años, 7% bruto), no un promedio estadístico oficial de ningún organismo. El objetivo es mostrar el efecto matemático de la diferencia de comisión, aplicable a cualquier persona ajustando sus propios números.",
+      },
+      {
+        question: "¿Por qué comparar 0,2% con 2% y no con otras cifras?",
+        answer:
+          "Son cifras representativas de los extremos habituales del mercado: 0,2% es típico de fondos indexados de bajo coste, y 2% es una comisión frecuente en fondos de gestión activa con comisiones elevadas. Puedes calcular tu propio caso con nuestra [calculadora de coste de comisiones](/calculadoras/coste-comisiones).",
+      },
+      {
+        question: "¿Estas comisiones tan altas existen de verdad en el mercado español?",
+        answer:
+          "Sí, comisiones de gestión del entorno del 1,5%-2% son habituales en muchos fondos de gestión activa comercializados en España, especialmente los distribuidos por redes de banca tradicional.",
+      },
+      {
+        question: "¿Puedo replicar este cálculo con mis propios números?",
+        answer:
+          "Sí, puedes hacerlo con nuestra [calculadora de interés compuesto](/calculadoras/interes-compuesto), ejecutándola dos veces con tu capital y aportación reales, una vez con cada tasa de rentabilidad neta (rentabilidad bruta menos cada comisión).",
+      },
+      {
+        question: "¿Puedo usar estos datos citando la fuente?",
+        answer:
+          "Sí, este estudio es de libre consulta y cita, siempre que se atribuya a Invexia (invexia.app) como fuente.",
+      },
+    ],
+    relatedGlossarySlugs: ["comision-de-gestion", "interes-compuesto", "fondo-indexado"],
+    disclaimer:
+      "Este estudio tiene fines educativos e ilustrativos y no constituye asesoramiento financiero personalizado ni una predicción de mercado. Los resultados son una simulación con una rentabilidad constante hipotética; los mercados reales no rinden un porcentaje fijo cada año, y las comisiones concretas varían según el fondo y la entidad. Antes de tomar decisiones de inversión, valora tu caso particular o consulta con un profesional cualificado.",
+  },
 ];
